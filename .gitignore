@@ -3,6 +3,7 @@
 
 # Files
 !*.org
+!*.bib
 !*.html
 !*.css
 !*.js
@@ -14,7 +15,9 @@
 !*.png
 
 # Directories
+!bib/
 !blog/
 !images/
 !css/
 !js/
+
