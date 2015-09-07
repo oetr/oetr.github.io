@@ -1,0 +1,199 @@
+#+STARTUP: overview
+#+COLUMNS: %80ITEM  %7CLOCKSUM(Clocked) %5TODO(State)
+#+TITLE:   Perceptron convergence algorithm
+#+AUTHOR:  Peter Samarin
+#+DATE:    18.07.2014   
+#+EMAIL:   peter.samarin@gmail.com
+#+DESCRIPTION: Repetition of perceptron convergence algorithm from Haykin's book
+#+KEYWORDS:    algorithm, algorithm of the week, learning, machine learning, neural network, perceptron, Racket
+#+LANGUAGE:    en
+#+OPTIONS: H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
+#+OPTIONS: tags:not-in-toc
+#+OPTIONS: creator:nil author:nil email:nil date:nil title:t html-style:nil html-scripts:nil
+#+HTML_HTML5_FANCY: t
+
+
+
+Perceptron is a function with several inputs and one output that linearly combines the input and the internal weights and applies an activation function on the result.
+Weights are some values to be trained.
+Perceptron is a simplified model of a neuron with any number of inputs and one output.
+The activation function is /signum/, which returns a 1 if the input is greater than zero, and -1 otherwise.
+\[\mbox{y} = \mbox{sign}(\Sigma_{i}\mbox{w}_i*\mbox{x}_i)\]
+
+Perceptron can be trained by correcting its weights by a small amount each time when it incorrectly classifies a training example.
+
+\[w_{new} = w_{old} + x*\eta*\mbox{error}\],
+
+where error is the difference between desired and actual outputs of the perceptron, and $\eta$ is the learning rate that specifies how much the old weight should be moved and make the error a little bit smaller.
+$\eta$ is typically a value between 0 and 1.0.
+
+Now let's train a perceptron to linearly separate a dataset sampled from a two half-moons distribution. Note that this is a reimplementation of experiments presented in cite:Haykin2009NetworksandLearningMachines.
+Here are some examples of how the distribution looks like.
+Each moon has a radius and a width.
+The position of the upper half moon is fixed, while the lower half moon can be freely moved around.
+
+#+CAPTION: 
+#+ATTR_LaTeX: width=0.6\textwidth
+#+LABEL: img:data-example
+[[../images/data-example.jpg]]
+
+
+The perceptron has 2 inputs: x and y coordinates of the training example.
+The dataset contains 5000 training examples randomly sampled from the half-moon distribution.
+The training is done using $\eta$ = 0.3.
+The weights are initialized randomly, and here you can see the trained perceptrons with 100 different initial weights:
+
+
+#+CAPTION: 
+#+ATTR_LaTeX: width=0.6\textwidth
+#+LABEL: img:data-example
+[[../images/training-01.jpg]]
+
+
+The error rate goes down pretty quickly as more training examples are considered.
+Here is a graph showing the error rate with a varying number of training examples.
+The curve was produced by averaging over 50 independent trials.
+
+
+#+CAPTION: 
+#+ATTR_LaTeX: width=0.6\textwidth
+#+LABEL: img:data-example
+[[../images/error-rate-separable.jpg]]
+
+
+Perceptron works well in cases where the classes can be linearly separated from each other.
+When it's not the case, the perceptron performs poorly.
+Here is an example of trained perceptrons over our half-moons distribution where the lower half-moon can be found inside the upper half-moon:
+
+
+#+CAPTION: 
+#+ATTR_LaTeX: width=0.6\textwidth
+#+LABEL: img:data-example
+[[../images/nonseparable-01.jpg]]
+
+
+The error graph shows that increasing the number of training examples doesn't help, and the performance becomes worse.
+As $n$ increases, more training examples are found inside the wrong half-moon and push the weights away from horizontal position of the decision boundary.
+Thus, the error becomes larger.
+
+#+CAPTION: 
+#+ATTR_LaTeX: width=0.6\textwidth
+#+LABEL: img:data-example
+[[../images/error-rate-nonseparable.jpg]]
+
+
+Implementation of perceptron convergence algorithm in Racket can be found in in my [[http://github.com/oetr/AoW/tree/master/0001-Perceptron-convergence-theorem][github repository]].
+
+
+#+BIBLIOGRAPHY: ../bib/references acm limit:nil
+
+
+#+HTML: <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+
+#+HTML:<script type="text/javascript">
+#+HTML:      var disqus_shortname = 'oetrgithubcom';
+      
+        
+#+HTML:	//var disqus_developer = 1;
+#+HTML:        var disqus_identifier = 'http://www.peter-samarin.de/2014/06/29/perceptron-convergence-algorithm/';
+#+HTML:        var disqus_url = 'http://www.peter-samarin.de/2014/06/29/perceptron-convergence-algorithm/';
+#+HTML:        var disqus_script = 'embed.js';
+      
+
+#+HTML:    (function () {
+#+HTML:      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+#+HTML:      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+#+HTML:      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+#+HTML:    }());
+#+HTML: </script>
+
+
+* LATEX HEADER                                                     :noexport:
+:PROPERTIES:
+:ID:       181738e3-abe9-4761-97da-b8cb5c35f047
+:PUBDATE:  <2015-07-26 Sun 01:45>
+:END:
+#+LaTeX_CLASS: org-article
+#+LaTeX_CLASS_OPTIONS: [koma,a4paper,12pt,microtype,paralist,nofloat,colorlinks=true,linkcolor=gray,urlcolor=blue,citecolor=blue]
+# FONT: Charter combined with Bera->replaced with inconsolata (first 2 from charter, one from bera)
+# Packages
+#+LATEX_HEADER: \usepackage[ngerman, num]{isodate}
+#+LATEX_HEADER: \usepackage[utf8x]{inputenc}
+#+LATEX_HEADER: \usepackage[ngerman]{babel} % this is needed for umlauts
+#+LaTeX_HEADER: \usepackage[T1]{fontenc} 
+#+LaTeX_HEADER: \usepackage[bitstream-charter]{mathdesign}
+#+LaTeX_HEADER: \usepackage[scaled=.9]{helvet}
+#+LaTeX_HEADER: \usepackage[scaled]{beramono}
+#+LaTeX_HEADER: \usepackage{inconsolata}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+
+#+LATEX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER: \usepackage{lastpage}
+#+LATEX_HEADER: \usepackage[nottoc]{tocbibind}
+#+LaTeX_HEADER: \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+#+LaTeX_HEADER: \definecolor{webgreen}{rgb}{0,.5,0}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \pagestyle{empty}
+
+#+LaTeX_HEADER: \usepackage{longtable}
+#+LaTeX_HEADER: \usepackage{indentfirst}
+#+LaTeX_HEADER: \usepackage{float}
+#+LATEX_HEADER: \usepackage{subfigure}
+#+LaTeX_HEADER: \usepackage[format=plain,font=small]{caption}
+#+LaTeX_HEADER: \usepackage[german,capitalise]{cleveref} % Has to be loaded after hyperref
+
+# Make listings copyable
+#+LaTeX_HEADER: \usepackage{listings}
+#+LaTeX_HEADER: \definecolor{light-gray}{gray}{0.93}
+#+LaTeX_HEADER: \definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+#+LaTeX_HEADER: \definecolor{greencomments}{rgb}{0,0.5,0}
+#+LaTeX_HEADER: \definecolor{redstrings}{rgb}{0.9,0,0}
+
+#+LATEX_HEADER: \lstset{keepspaces=false,
+#+LATEX_HEADER: basicstyle=\footnotesize\ttfamily,
+#+LATEX_HEADER: frame=L,
+#+LATEX_HEADER: backgroundcolor=\color{light-gray},
+#+LATEX_HEADER: extendedchars=true,
+#+LATEX_HEADER: upquote=true,
+#+LATEX_HEADER: showspaces=true,
+#+LATEX_HEADER: showtabs=true,
+#+LATEX_HEADER: breaklines=true,
+#+LATEX_HEADER: showstringspaces=true,
+#+LATEX_HEADER: breakatwhitespace=true, 
+#+LATEX_HEADER: numbers=left,numberstyle=\tiny\color{gray},numbersep=10pt,stepnumber=1,firstnumber=1,numberfirstline=false,
+#+LATEX_HEADER: keywordstyle=\color{bluekeywords},
+#+LATEX_HEADER: stringstyle=\color{redstrings},
+#+LATEX_HEADER: commentstyle=\color{greencomments},
+#+LATEX_HEADER: literate={*}{{\char42}}1
+#+LATEX_HEADER:          {\ }{{\copyablespace}}1}
+
+
+#+LATEX_HEADER: \usepackage[space=true]{accsupp}
+#+LATEX_HEADER: \newcommand{\copyablespace}{\BeginAccSupp{method=hex,unicode,ActualText=00A0}\ \EndAccSupp{}}
+
+#+LATEX_HEADER: \usepackage{ifthen} % Allows the user of the \ifthenelse command
+#+LATEX_HEADER: \newboolean{enable-backrefs} % Variable to enable backrefs in the bibliography
+#+LATEX_HEADER: \setboolean{enable-backrefs}{false} % Variable value: true or false
+
+#+LATEX_HEADER: \newcommand{\backrefnotcitedstring}{\relax} % (Not cited.)
+#+LATEX_HEADER: \newcommand{\backrefcitedsinglestring}[1]{(cited on p. ~#1)}
+#+LATEX_HEADER: \newcommand{\backrefcitedmultistring}[1]{(cited on pp. ~#1.)}
+#+LATEX_HEADER: \ifthenelse{\boolean{enable-backrefs}} % If backrefs were enabled
+#+LATEX_HEADER: {
+#+LATEX_HEADER: \PassOptionsToPackage{hyperpageref}{backref}
+#+LATEX_HEADER: \usepackage{backref} % to be loaded after hyperref package 
+#+LATEX_HEADER: \renewcommand{\backreftwosep}{, ~} % separate 2 pages
+#+LATEX_HEADER: \renewcommand{\backreflastsep}{, ~} % separate last of longer list
+#+LATEX_HEADER: \renewcommand*{\backref}[1]{}  % disable standard
+#+LATEX_HEADER: \renewcommand*{\backrefalt}[4]{% detailed backref
+#+LATEX_HEADER: \ifcase #1 
+#+LATEX_HEADER: \backrefnotcitedstring
+#+LATEX_HEADER: \or
+#+LATEX_HEADER: \backrefcitedsinglestring{#2}
+#+LATEX_HEADER: \else
+#+LATEX_HEADER: \backrefcitedmultistring{#2}
+#+LATEX_HEADER: \fi}
+#+LATEX_HEADER: }{\relax}

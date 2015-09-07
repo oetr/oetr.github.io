@@ -2,6 +2,7 @@
 !.gitignore
 
 # Files
+!*.org
 !*.html
 !*.css
 !*.js

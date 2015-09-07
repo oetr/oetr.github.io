@@ -1,0 +1,29 @@
+#+STARTUP: overview
+#+COLUMNS: %80ITEM  %7CLOCKSUM(Clocked) %5TODO(State)
+#+TITLE:   
+#+AUTHOR:  Peter Samarin
+#+EMAIL:   peter.samarin@gmail.com
+#+DESCRIPTION: 
+#+KEYWORDS:    
+#+LANGUAGE: en
+#+OPTIONS: H:3 num:t toc:t  \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
+#+OPTIONS: tags:not-in-toc
+#+OPTIONS: creator:nil author:nil email:nil date:nil title:nil
+
+
+#+HTML_CONTAINER: div
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_HEAD:
+#+HTML_HEAD_EXTRA:
+#+HTML_HTML5_FANCY:
+#+HTML_INCLUDE_SCRIPTS:
+#+HTML_INCLUDE_STYLE:
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+INFOJS_OPT:
+
+
+- [[file:./publications.org][Publications]]
+- [[file:blog/00001-perceptron.org][Perceptron convergence theorem]]
