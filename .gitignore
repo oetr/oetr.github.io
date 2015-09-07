@@ -1,0 +1,21 @@
+*
+!.gitignore
+
+# Files
+!*.org
+!*.bib
+!*.css
+!*.js
+
+# images
+!*.svg
+!*.svgz
+!*.jpg
+!*.png
+
+# Directories
+!blog/
+!images/
+!css/
+!js/
+!bib/
