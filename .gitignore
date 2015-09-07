@@ -2,8 +2,7 @@
 !.gitignore
 
 # Files
-!*.org
-!*.bib
+!*.html
 !*.css
 !*.js
 
@@ -18,4 +17,3 @@
 !images/
 !css/
 !js/
-!bib/
