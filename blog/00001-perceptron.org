@@ -86,7 +86,13 @@ Thus, the error becomes larger.
 Implementation of perceptron convergence algorithm in Racket can be found in in my [[http://github.com/oetr/AoW/tree/master/0001-Perceptron-convergence-theorem][github repository]].
 
 
+* References
 #+BIBLIOGRAPHY: ../bib/references ieeetr limit:t
+
+
+#+HTML: <div class='footer'><a href=\"http://peter-samarin.de\">Peter Samarin</a></div>
+
+* Comments
 
 
 # Disqus
@@ -98,8 +104,8 @@ Implementation of perceptron convergence algorithm in Racket can be found in in 
       
         
 #+HTML:	//var disqus_developer = 1;
-#+HTML:        var disqus_identifier = 'http://www.peter-samarin.de/2014/06/29/perceptron-convergence-algorithm/';
-#+HTML:        var disqus_url = 'http://www.peter-samarin.de/2014/06/29/perceptron-convergence-algorithm/';
+#+HTML:        var disqus_identifier = 'http://peter-samarin.de/blog/perceptron.html';
+#+HTML:        var disqus_url = ''http://peter-samarin.de/blog/perceptron.html';
 #+HTML:        var disqus_script = 'embed.js';
       
 
