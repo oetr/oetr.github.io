@@ -7,7 +7,7 @@
 #+DESCRIPTION: Repetition of perceptron convergence algorithm from Haykin's book
 #+KEYWORDS:    algorithm, algorithm of the week, learning, machine learning, neural network, perceptron, Racket
 #+LANGUAGE:    en
-#+OPTIONS: H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
 #+OPTIONS: tags:not-in-toc
 #+OPTIONS: creator:nil author:nil email:nil date:nil title:t html-style:nil html-scripts:nil
@@ -89,32 +89,27 @@ Implementation of perceptron convergence algorithm in Racket can be found in in 
 * References
 #+BIBLIOGRAPHY: ../bib/references ieeetr limit:t
 
-
 #+HTML: <div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
 
 * Comments
-
-
 # Disqus
-#+HTML: <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+#+BEGIN_HTML
+<div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+<script type="text/javascript">
+  var disqus_shortname = 'oetrgithubcom';
+  //var disqus_developer = 1;
+  var disqus_identifier = 'http://peter-samarin.de/blog/perceptron.html';
+  var disqus_url        = 'http://peter-samarin.de/blog/perceptron.html';
 
+  var disqus_script = 'embed.js';
+  (function () {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
+#+END_HTML
 
-#+HTML:<script type="text/javascript">
-#+HTML:      var disqus_shortname = 'oetrgithubcom';
-      
-        
-#+HTML:	//var disqus_developer = 1;
-#+HTML:        var disqus_identifier = 'http://peter-samarin.de/blog/perceptron.html';
-#+HTML:        var disqus_url = ''http://peter-samarin.de/blog/perceptron.html';
-#+HTML:        var disqus_script = 'embed.js';
-      
-
-#+HTML:    (function () {
-#+HTML:      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-#+HTML:      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-#+HTML:      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-#+HTML:    }());
-#+HTML: </script>
 
 
 * LATEX HEADER                                                     :noexport:
