@@ -23,12 +23,12 @@ The activation function is /signum/, which returns a 1 if the input is greater t
 
 Perceptron can be trained by correcting its weights by a small amount each time when it incorrectly classifies a training example.
 
-\[w_{new} = w_{old} + x*\eta*\mbox{error}\],
+\[w_{new} = w_{old} + x*\eta*\mbox{error},\]
 
 where error is the difference between desired and actual outputs of the perceptron, and $\eta$ is the learning rate that specifies how much the old weight should be moved and make the error a little bit smaller.
 $\eta$ is typically a value between 0 and 1.0.
 
-Now let's train a perceptron to linearly separate a dataset sampled from a two half-moons distribution. Note that this is a reimplementation of experiments presented in cite:Haykin2009NetworksandLearningMachines.
+Now let's train a perceptron to linearly separate a dataset sampled from a two half-moons distribution. Note that this is a reimplementation of experiments presented in [[cite:Haykin2009NetworksandLearningMachines]].
 Here are some examples of how the distribution looks like.
 Each moon has a radius and a width.
 The position of the upper half moon is fixed, while the lower half moon can be freely moved around.
@@ -86,9 +86,10 @@ Thus, the error becomes larger.
 Implementation of perceptron convergence algorithm in Racket can be found in in my [[http://github.com/oetr/AoW/tree/master/0001-Perceptron-convergence-theorem][github repository]].
 
 
-#+BIBLIOGRAPHY: ../bib/references acm limit:nil
+#+BIBLIOGRAPHY: ../bib/references ieeetr limit:t
 
 
+# Disqus
 #+HTML: <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
 
 

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-09-08 Tue 13:16 -->
+<!-- 2015-09-08 Tue 13:36 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Perceptron convergence algorithm</title>
@@ -52,7 +52,7 @@ Perceptron can be trained by correcting its weights by a small amount each time 
 </p>
 
 <p>
-\[w_{new} = w_{old} + x*\eta*\mbox{error}\],
+\[w_{new} = w_{old} + x*\eta*\mbox{error},\]
 </p>
 
 <p>
@@ -61,7 +61,7 @@ where error is the difference between desired and actual outputs of the perceptr
 </p>
 
 <p>
-Now let's train a perceptron to linearly separate a dataset sampled from a two half-moons distribution. Note that this is a reimplementation of experiments presented in [<a href="#Haykin2009NetworksandLearningMachines">Haykin2009NetworksandLearningMachines</a>].
+Now let's train a perceptron to linearly separate a dataset sampled from a two half-moons distribution. Note that this is a reimplementation of experiments presented in [<a href="#Haykin2009NetworksandLearningMachines">1</a>].
 Here are some examples of how the distribution looks like.
 Each moon has a radius and a width.
 The position of the upper half moon is fixed, while the lower half moon can be freely moved around.
@@ -137,15 +137,19 @@ Implementation of perceptron convergence algorithm in Racket can be found in in 
 
 <div id="bibliography">
 
+<table>
 
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="Haykin2009NetworksandLearningMachines">1</a>]
+</td>
+<td class="bibtexitem">
+S.&nbsp;Haykin, <em>Networks and Learning Machines</em>.
+ Prentice Hall, 3rd&nbsp;ed., 2009.
 
-<p><a name="Haykin2009NetworksandLearningMachines"></a>
-
-Haykin, S.
- <em>Networks and Learning Machines</em>, 3rd&nbsp;ed.
- Prentice Hall, 2009.
-
-</p>
+</td>
+</tr>
+</table>
 </div>
 
 

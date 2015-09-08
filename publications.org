@@ -14,4 +14,4 @@
 
 
 
-#+BIBLIOGRAPHY: ./bib/publications apalike
+#+BIBLIOGRAPHY: ./bib/publications ieeetr option:-nokeys
