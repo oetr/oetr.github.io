@@ -15,3 +15,5 @@
 
 
 #+BIBLIOGRAPHY: ./bib/publications ieeetr option:-nokeys
+
+#+HTML: <div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
