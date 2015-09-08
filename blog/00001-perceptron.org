@@ -90,7 +90,7 @@ Implementation of perceptron convergence algorithm in Racket can be found in in 
 #+BIBLIOGRAPHY: ../bib/references ieeetr limit:t
 
 
-#+HTML: <div class='footer'><a href=\"http://peter-samarin.de\">Peter Samarin</a></div>
+#+HTML: <div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
 
 * Comments
 
