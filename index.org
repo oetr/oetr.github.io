@@ -26,4 +26,4 @@
 
 
 - [[file:./publications.org][Publications]]
-- [[file:blog/00001-perceptron.org][Perceptron convergence theorem]]
+- [[file:blog/perceptron.org][Perceptron convergence theorem]]
