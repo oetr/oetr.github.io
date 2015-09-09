@@ -6,7 +6,7 @@
 #+DESCRIPTION: 
 #+KEYWORDS:    
 #+LANGUAGE: en
-#+OPTIONS: H:3 num:t toc:t  \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: H:3 num:nil toc:nil  \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
 #+OPTIONS: tags:not-in-toc
 #+OPTIONS: creator:nil author:nil email:nil date:nil title:nil
@@ -26,4 +26,6 @@
 
 
 - [[file:./publications.org][Publications]]
+
+#+HTML: <br>
 - [[file:blog/perceptron.org][Perceptron convergence theorem]]

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-09-09 Wed 13:22 -->
+<!-- 2015-09-09 Wed 21:29 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Perceptron convergence algorithm</title>
@@ -20,7 +20,7 @@
 
         "HTML-CSS": { scale: 100,
                         linebreaks: { automatic: "false" },
-                        webFont: "TeX"
+                        preferredFont: "TeX"
                        },
         SVG: {scale: 100,
               linebreaks: { automatic: "false" },
@@ -28,13 +28,13 @@
         NativeMML: {scale: 100},
         TeX: { equationNumbers: {autoNumber: "AMS"},
                MultLineWidth: "85%",
-               TagSide: "right",
+               TagSide: "left",
                TagIndent: ".8em"
              }
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div id="content">
@@ -44,7 +44,7 @@ Perceptron is a function with several inputs and one output that linearly combin
 Weights are some values to be trained.
 Perceptron is a simplified model of a neuron with any number of inputs and one output.
 The activation function is <i>signum</i>, which returns a 1 if the input is greater than zero, and -1 otherwise.
-\[\mbox{y} = \mbox{sign}(\Sigma_{i}\mbox{w}_i*\mbox{x}_i)\]
+\[\mbox{y} = \mbox{sign}(\sum_{i}\mbox{w}_i \cdot \mbox{x}_i)\]
 </p>
 
 <p>
@@ -52,7 +52,7 @@ Perceptron can be trained by correcting its weights by a small amount each time 
 </p>
 
 <p>
-\[w_{new} = w_{old} + x*\eta*\mbox{error},\]
+\[w_{new} = w_{old} + x \cdot \eta \cdot \mbox{error},\]
 </p>
 
 <p>
