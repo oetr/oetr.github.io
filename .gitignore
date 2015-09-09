@@ -1,6 +1,7 @@
 *
 !.gitignore
 !CNAME
+!favicon.ico
 
 # Files
 !*.org
