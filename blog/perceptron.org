@@ -34,7 +34,7 @@ Each moon has a radius and a width.
 The position of the upper half moon is fixed, while the lower half moon can be freely moved around.
 
 #+CAPTION: 
-#+ATTR_LaTeX: width=0.6\textwidth
+# #+ATTR_LaTeX: width=0.6\textwidth
 #+LABEL: img:data-example
 [[../images/data-example.jpg]]
 
@@ -46,7 +46,7 @@ The weights are initialized randomly, and here you can see the trained perceptro
 
 
 #+CAPTION: 
-#+ATTR_LaTeX: width=0.6\textwidth
+# #+ATTR_LaTeX: width=0.6\textwidth
 #+LABEL: img:data-example
 [[../images/training-01.jpg]]
 
@@ -57,7 +57,7 @@ The curve was produced by averaging over 50 independent trials.
 
 
 #+CAPTION: 
-#+ATTR_LaTeX: width=0.6\textwidth
+# #+ATTR_LaTeX: width=0.6\textwidth
 #+LABEL: img:data-example
 [[../images/error-rate-separable.jpg]]
 
@@ -68,7 +68,7 @@ Here is an example of trained perceptrons over our half-moons distribution where
 
 
 #+CAPTION: 
-#+ATTR_LaTeX: width=0.6\textwidth
+# #+ATTR_LaTeX: width=0.6\textwidth
 #+LABEL: img:data-example
 [[../images/nonseparable-01.jpg]]
 
@@ -78,7 +78,7 @@ As $n$ increases, more training examples are found inside the wrong half-moon an
 Thus, the error becomes larger.
 
 #+CAPTION: 
-#+ATTR_LaTeX: width=0.6\textwidth
+# #+ATTR_LaTeX: width=0.6\textwidth
 #+LABEL: img:data-example
 [[../images/error-rate-nonseparable.jpg]]
 
