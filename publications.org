@@ -11,11 +11,9 @@
 #+OPTIONS: tags:not-in-toc
 #+OPTIONS: creator:nil author:nil email:nil date:nil title:nil
 #+HTML_HTML5_FANCY: t
-#+LATEX_HEADER: \usepackage[round]{natbib}
 
 
 
-#+BIBLIOGRAPHY: ./bib/publications unsrt option:-nokeys option:-dl  option:-html-entities option:-unicode option:--print-keys
-
+#+BIBLIOGRAPHY: ./bib/publications apalike option:-nokeys option:-dl option:-unicode option:-html-entities
 #+HTML: <div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
 
