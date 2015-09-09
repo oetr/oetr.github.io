@@ -1,6 +1,6 @@
 #+STARTUP: overview
 #+COLUMNS: %80ITEM  %7CLOCKSUM(Clocked) %5TODO(State)
-#+TITLE:   
+#+TITLE:   Peter Samarin
 #+AUTHOR:  Peter Samarin
 #+EMAIL:   peter.samarin@gmail.com
 #+DESCRIPTION: 
