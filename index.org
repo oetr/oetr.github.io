@@ -26,5 +26,5 @@
 
 
 - [[file:./publications.org][Publications]]
-- [[file:blog/perceptron.org][Perceptron convergence theorem]]
-- [[file:blog/the-artist-in-you.org][The artist in you]]
+- [[file:blog/perceptron.org][Perceptron Convergence Theorem]]
+- [[file:blog/the-artist-in-you.org][The Artist in You]]
