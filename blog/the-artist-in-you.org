@@ -12,49 +12,22 @@
 #+OPTIONS: tags:not-in-toc
 #+OPTIONS: creator:nil author:nil email:nil date:nil title:t html-style:nil html-scripts:nil
 
-#+HTML_HTML5_FANCY: t
-#+HTML_MATHJAX: tagside: left font: "TeX" path: "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+# #+HTML_HTML5_FANCY: t
+# #+HTML_MATHJAX: tagside: left font: "TeX" path: "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 
 
-There is something inherently cool about dumping paint on a canvas and smashing the shit out it by using a brush.
-Through the great power of induction I will make a bold statement: there exist an artist in everyone, because he exists in me!
-To make my point, here is a story from my high-school days in Germany, in the arts class.
-Every single time when me and my classmates were told to draw or paint something, there were people who could and who couldn't do it.
-I was part of the second group, and sincerely believed that I could not do any of that.
-Today, I still think that I am a bad painter!
-But I don't need to be a good painter to have fun with painting.
+I like painting.
 
+Especially the kind that involves no thinking, no composition---just spread the colors, mix them with each other, and watch the canvas change.
 
-
-I discovered the significance of fun once the topic was to do a modern arts kind of painting!
-The fun part was to take color and put it on the canvas.
-No thinking, no composition, just spreading the colors, smearing them randomly, mixing them with each other, watching them change, watching the whole canvas change from white to something else, gave me a great sip of dopamine and good grades for all my "modern art" works.
-At that time, I started making fun of modern art, because it was so easy.
-Everyone was amazed with my paintings, while struggling with their own.
-And I was finished way faster than everyone else.
-One class mate adapting my "style" and ended up with the same results and grades.
-
-The painting ended as soon as I finished the high school, and from then on I was busy studying (more or less) computer science and playing computer games.
-After bachelors came masters and Internet addiction!
-And this is when the creative part died---information consumption made me a passive bitch always wanting more of it.
-But fear not, the fangs of the mind freeze can be escaped from time to time.
-On one such occasion, I used the time to be creative and paint a picture just for fun.
-And fun was it lot!
-I even put the picture on my wall because it looks so cool (for me!):
-
+Recently, I could find some time to paint, and here is the result.
 #+CAPTION: 
 #+ATTR_HTML: :width 640
 [[../images/painting-001.jpg]]
 
-
-The second time I tried it, I even made a cute little documentary of the whole process.
-It was made by taking many pictures in succession, while painting.
-The pictures are then put one after another to make a video.
-The background music is "Disposition" by Tool.
-I don't like my second picture as much as the first one, and I probably won't hang it on my walls, but the video is kind of cool in its own way.
-So it wasn't a complete waste of time!
-
+Soon thereafter, I found some more time and made a short video.
 #+HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/w7eiMXyJDF0" frameborder="0" allowfullscreen></iframe>
+
 
 
 #+HTML: <br><div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
