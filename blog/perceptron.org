@@ -115,10 +115,6 @@ Implementation of perceptron convergence algorithm in Racket can be found in in 
 
 
 * LATEX HEADER                                                     :noexport:
-:PROPERTIES:
-:ID:       181738e3-abe9-4761-97da-b8cb5c35f047
-:PUBDATE:  <2015-07-26 Sun 01:45>
-:END:
 #+LaTeX_CLASS: org-article
 #+LaTeX_CLASS_OPTIONS: [koma,a4paper,12pt,microtype,paralist,nofloat,colorlinks=true,linkcolor=gray,urlcolor=blue,citecolor=blue]
 # FONT: Charter combined with Bera->replaced with inconsolata (first 2 from charter, one from bera)

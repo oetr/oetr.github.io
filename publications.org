@@ -13,7 +13,6 @@
 #+HTML_HTML5_FANCY: t
 
 
-
-#+BIBLIOGRAPHY: ./bib/publications apalike option:-nokeys option:-dl option:-unicode option:-html-entities
+#+BIBLIOGRAPHY: ./bib/publications amsplain  option:-u option:-unicode option:-html-entities option:-nobibsource
 #+HTML: <div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
 

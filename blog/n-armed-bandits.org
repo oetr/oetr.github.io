@@ -1,0 +1,134 @@
+#+STARTUP: overview
+#+COLUMNS: %80ITEM  %7CLOCKSUM(Clocked) %5TODO(State)
+#+TITLE:   N-Armed Bandits
+#+AUTHOR:  Peter Samarin
+#+DATE:    01.01.2016
+#+EMAIL:   peter.samarin@gmail.com
+#+DESCRIPTION: Repetition of experiments from "Reinforcement Learning" by Sutton and Barto
+#+KEYWORDS:    algorithm, algorithm of the week, learning, machine learning, reinforcement learning, Racket
+#+LANGUAGE:    en
+#+OPTIONS: H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
+#+OPTIONS: tags:not-in-toc
+#+OPTIONS: creator:nil author:nil email:nil date:nil title:t html-style:nil html-scripts:nil
+
+#+HTML_HTML5_FANCY: t
+#+HTML_MATHJAX: tagside: left font: "TeX" path: "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+
+
+
+# #+CAPTION: 
+# # #+ATTR_LaTeX: width=0.6\textwidth
+# #+LABEL: img:data-example
+# [[../images/error-rate-nonseparable.jpg]]
+
+
+* References
+# #+BIBLIOGRAPHY: ../bib/references ieeetr limit:t
+
+#+HTML: <div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
+
+* Comments
+# Disqus
+#+BEGIN_HTML
+<div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+<script type="text/javascript">
+  var disqus_shortname = 'oetrgithubcom';
+  //var disqus_developer = 1;
+  var disqus_identifier = 'http://peter-samarin.de/blog/n-armed-bandits.html';
+  var disqus_url        = 'http://peter-samarin.de/blog/n-armed-bandits.html';
+
+  var disqus_script = 'embed.js';
+  (function () {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
+#+END_HTML
+
+
+
+* LATEX HEADER                                                     :noexport:
+#+LaTeX_CLASS: org-article
+#+LaTeX_CLASS_OPTIONS: [koma,a4paper,12pt,microtype,paralist,nofloat,colorlinks=true,linkcolor=gray,urlcolor=blue,citecolor=blue]
+# FONT: Charter combined with Bera->replaced with inconsolata (first 2 from charter, one from bera)
+# Packages
+#+LATEX_HEADER: \usepackage[ngerman, num]{isodate}
+#+LATEX_HEADER: \usepackage[utf8x]{inputenc}
+#+LATEX_HEADER: \usepackage[ngerman]{babel} % this is needed for umlauts
+#+LaTeX_HEADER: \usepackage[T1]{fontenc} 
+#+LaTeX_HEADER: \usepackage[bitstream-charter]{mathdesign}
+#+LaTeX_HEADER: \usepackage[scaled=.9]{helvet}
+#+LaTeX_HEADER: \usepackage[scaled]{beramono}
+#+LaTeX_HEADER: \usepackage{inconsolata}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+
+#+LATEX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER: \usepackage{lastpage}
+#+LATEX_HEADER: \usepackage[nottoc]{tocbibind}
+#+LaTeX_HEADER: \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+#+LaTeX_HEADER: \definecolor{webgreen}{rgb}{0,.5,0}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \pagestyle{empty}
+
+#+LaTeX_HEADER: \usepackage{longtable}
+#+LaTeX_HEADER: \usepackage{indentfirst}
+#+LaTeX_HEADER: \usepackage{float}
+#+LATEX_HEADER: \usepackage{subfigure}
+#+LaTeX_HEADER: \usepackage[format=plain,font=small]{caption}
+#+LaTeX_HEADER: \usepackage[german,capitalise]{cleveref} % Has to be loaded after hyperref
+
+# Make listings copyable
+#+LaTeX_HEADER: \usepackage{listings}
+#+LaTeX_HEADER: \definecolor{light-gray}{gray}{0.93}
+#+LaTeX_HEADER: \definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+#+LaTeX_HEADER: \definecolor{greencomments}{rgb}{0,0.5,0}
+#+LaTeX_HEADER: \definecolor{redstrings}{rgb}{0.9,0,0}
+
+#+LATEX_HEADER: \lstset{keepspaces=false,
+#+LATEX_HEADER: basicstyle=\footnotesize\ttfamily,
+#+LATEX_HEADER: frame=L,
+#+LATEX_HEADER: backgroundcolor=\color{light-gray},
+#+LATEX_HEADER: extendedchars=true,
+#+LATEX_HEADER: upquote=true,
+#+LATEX_HEADER: showspaces=true,
+#+LATEX_HEADER: showtabs=true,
+#+LATEX_HEADER: breaklines=true,
+#+LATEX_HEADER: showstringspaces=true,
+#+LATEX_HEADER: breakatwhitespace=true, 
+#+LATEX_HEADER: numbers=left,numberstyle=\tiny\color{gray},numbersep=10pt,stepnumber=1,firstnumber=1,numberfirstline=false,
+#+LATEX_HEADER: keywordstyle=\color{bluekeywords},
+#+LATEX_HEADER: stringstyle=\color{redstrings},
+#+LATEX_HEADER: commentstyle=\color{greencomments},
+#+LATEX_HEADER: literate={*}{{\char42}}1
+#+LATEX_HEADER:          {\ }{{\copyablespace}}1}
+
+
+#+LATEX_HEADER: \usepackage[space=true]{accsupp}
+#+LATEX_HEADER: \newcommand{\copyablespace}{\BeginAccSupp{method=hex,unicode,ActualText=00A0}\ \EndAccSupp{}}
+
+#+LATEX_HEADER: \usepackage{ifthen} % Allows the user of the \ifthenelse command
+#+LATEX_HEADER: \newboolean{enable-backrefs} % Variable to enable backrefs in the bibliography
+#+LATEX_HEADER: \setboolean{enable-backrefs}{false} % Variable value: true or false
+
+#+LATEX_HEADER: \newcommand{\backrefnotcitedstring}{\relax} % (Not cited.)
+#+LATEX_HEADER: \newcommand{\backrefcitedsinglestring}[1]{(cited on p. ~#1)}
+#+LATEX_HEADER: \newcommand{\backrefcitedmultistring}[1]{(cited on pp. ~#1.)}
+#+LATEX_HEADER: \ifthenelse{\boolean{enable-backrefs}} % If backrefs were enabled
+#+LATEX_HEADER: {
+#+LATEX_HEADER: \PassOptionsToPackage{hyperpageref}{backref}
+#+LATEX_HEADER: \usepackage{backref} % to be loaded after hyperref package 
+#+LATEX_HEADER: \renewcommand{\backreftwosep}{, ~} % separate 2 pages
+#+LATEX_HEADER: \renewcommand{\backreflastsep}{, ~} % separate last of longer list
+#+LATEX_HEADER: \renewcommand*{\backref}[1]{}  % disable standard
+#+LATEX_HEADER: \renewcommand*{\backrefalt}[4]{% detailed backref
+#+LATEX_HEADER: \ifcase #1 
+#+LATEX_HEADER: \backrefnotcitedstring
+#+LATEX_HEADER: \or
+#+LATEX_HEADER: \backrefcitedsinglestring{#2}
+#+LATEX_HEADER: \else
+#+LATEX_HEADER: \backrefcitedmultistring{#2}
+#+LATEX_HEADER: \fi}
+#+LATEX_HEADER: }{\relax}
