@@ -255,6 +255,27 @@ a:visited{color:#551A8B}
     margin-bottom:0em;
 }
 
+/* iframe { */
+/*     background:transparent; */
+/*     border:0px none; */
+/*     font-size:.90em; */
+/*     line-height:0em; */
+/*     padding:0em!important; */
+/*     text-align:center!important; */
+/*     align-content:center; */
+/*     margin-bottom:0em; */
+/* } */
+.iframe {
+    background:transparent;
+    border:0px none;
+    font-size:.90em;
+    line-height:0em;
+    padding:0em!important;
+    text-align:center!important;
+    align-content:center;
+    margin-bottom:0em;
+}
+
 .outline-2{
     margin:3em 0!important;
 }

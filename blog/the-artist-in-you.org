@@ -26,7 +26,7 @@ Recently, I could find some time to paint, and here is the result.
 [[../images/painting-001.jpg]]
 
 Soon thereafter, I found some more time and made a short video.
-#+HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/w7eiMXyJDF0" frameborder="0" allowfullscreen></iframe>
+#+HTML: <div class = iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/w7eiMXyJDF0" frameborder="0" allowfullscreen></iframe></div>
 
 
 
