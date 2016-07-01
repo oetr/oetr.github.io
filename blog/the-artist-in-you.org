@@ -29,8 +29,7 @@ Soon thereafter, I found some more time and made a short video.
 #+HTML: <div class = iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/w7eiMXyJDF0" frameborder="0" allowfullscreen></iframe></div>
 
 
-
-#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
+#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">[Peter Samarin]</a></div>
 
 * Comments
 # Disqus
