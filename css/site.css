@@ -25,7 +25,7 @@ html>body{font-size:14px;}
 body{
     width:54em;
     padding:1.5em;
-    padding-top:6em;
+    padding-top:0em;
 
 }
 
@@ -260,7 +260,7 @@ a:visited{color:#551A8B}
 }
 
 
-body{padding-top:9em;padding-left:3em;}
+body{padding-top:1em;padding-left:3em;}
 .header{
     padding-left:3em!important;
 }
