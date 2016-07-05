@@ -17,7 +17,7 @@ div.author p{
 }
 
 body{
-    font:87.5% "Georgia Serif", Times, Palatino, "Times New Roman", serif;
+    font:100% "Georgia Serif", Times, Palatino, "Times New Roman", serif;
 }
 a{color:blue;}
 html>body{font-size:14px;}
@@ -231,7 +231,7 @@ h1.title{font-weight:normal;font-size:3em;line-height:1em;}
 /*img{max-width:48em;}*/
 
 body{/*text-align:justify;*/
-     font:12px "Lucida Grande","Trebuchet MS","Bitstream Vera Sans",Verdana,Helvetica,sans-serif !important;
+     font:15px "Lucida Grande","Trebuchet MS","Bitstream Vera Sans",Verdana,Helvetica,sans-serif !important;
      color:#272727;
     }
 code{
