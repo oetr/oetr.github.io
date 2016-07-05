@@ -16,11 +16,12 @@ div.author p{
     display:inline;
 }
 
-body{
-    font:100% "Georgia Serif", Times, Palatino, "Times New Roman", serif;
-}
+/* body{ */
+/*     font:100% "Georgia Serif", Times, Palatino, "Times New Roman", serif; */
+/* } */
+
 a{color:blue;}
-html>body{font-size:14px;}
+html>body{font-size:16px;}
 
 body{
     /*width:54em;*/
@@ -227,13 +228,9 @@ h1,h2,h3,h4,h5,h6{
 
 h1.title{font-weight:normal;font-size:3em;line-height:1em;}
 
-/*body{width:48em;}*/
-/*img{max-width:48em;}*/
+body{max-width:80em;}
+img{max-width:80em;}
 
-body{/*text-align:justify;*/
-     font:15px "Lucida Grande","Trebuchet MS","Bitstream Vera Sans",Verdana,Helvetica,sans-serif !important;
-     color:#272727;
-    }
 code{
     font-weight:inherit;
     color:#048;
