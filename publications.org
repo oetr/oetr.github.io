@@ -14,14 +14,13 @@
 
  
 * Refereed Papers
-
 #+BEGIN_publications
+- (/to appear/) @@html:<font color=purple>@@Peter Samarin, Alexander Skripnik, and Kerstin Lemke-Rust@@html:</font>@@ (@@html:<font color=blue>@@2016@@html:</font>@@). *Fault-Channel Watermarks.* In @@html:<em><font color=gray>@@The 10th International Conference on Information Security Theory and Practice (WISTP'2016)@@html:</font></em>@@, Heraklion, Crete, Greece. [[[./bib/OwnPublications/2016-wistp-paper.pdf][paper]]]
 - @@html:<font color=purple>@@Peter Samarin, Kerstin Lemke-Rust, and Christof Paar@@html:</font>@@ (@@html:<font color=blue>@@2016@@html:</font>@@). *IP Core Protection using Voltage-Controlled Side-Channel Receivers.* In @@html:<em><font color=gray>@@Hardware-Oriented Security and Trust (HOST), 2016 IEEE International Symposium on@@html:</font></em>@@. [[[./bib/OwnPublications/2016-host-paper.pdf][paper]], [[./bib/OwnPublications/2016-host-presentation-samarin.pdf][presentation]]]
 - @@html:<font color=purple>@@Ariano-Tim Donda, Peter Samarin, Jacek Samotyja, Kerstin Lemke-Rust, and Christof Paar@@html:</font>@@ (@@html:<font color=blue>@@2015@@html:</font>@@). *Remote IP Protection Using Timing Channels.* In Lee, J. and Kim, J., editors, @@html:<em><font color=gray>@@Information Security and Cryptology - ICISC 2014@@html:</font></em>@@, volume 8949 of /LNCS/, pages 222–237. Springer International Publishing. [[[./bib/OwnPublications/2015-icisc-paper.pdf][paper]], [[./bib/OwnPublications/2015-icisc-presentation.pdf][presentation]]]
 - @@html:<font color=purple>@@Peter Samarin, Timur Saitov, Rainer Herpers, and Kenneth B. Kent@@html:</font>@@ (@@html:<font color=blue>@@2013@@html:</font>@@). *Intensity and Distance Thresholding in Hardware to Enable Flexible Blob Detection for a Vision System with Limited Bandwidth.* In  @@html:<em><font color=gray>@@Highly Efficient Accelerators and Reconfigurable Technologies (HEART 2013)@@html:</font></em>@@, pages 109–112, Edinburgh, Scotland. [[[./bib/OwnPublications/2013-heart-paper.pdf][paper]], [[./bib/OwnPublications/2013-heart-poster.pdf][poster]], [[./bib/OwnPublications/2013-heart-presentation.pdf][presentation]]]
 #+END_publications
 
 # #+BIBLIOGRAPHY: ./bib/publications apalike  option:-nokeys option:-u option:-unicode option:-html-entities option:-nobibsource
-
 
 #+HTML: <br><div class='footer'><a href="http://peter-samarin.de">[Peter Samarin]</a></div>
