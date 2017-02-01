@@ -7,9 +7,8 @@ body {
 }
 h1{text-align:center;}
 h2,h3 {
-	line-height:1.2em;
+    line-height:1.2em;
 }
-
 div.publications li {
     margin:0 0 7px 0;
 }
@@ -19,10 +18,8 @@ p{
     margin-top:1.5em;
     margin-bottom:1.5em;
 }
-
-
 @media print {
-	body {
-		max-width:none
-	}
+    body {
+	max-width:none
+    }
 }
