@@ -11,16 +11,18 @@
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
 #+OPTIONS: tags:not-in-toc
 #+OPTIONS: creator:nil author:nil email:nil date:nil title:t html-style:nil html-scripts:nil
+#+OPTIONS: tex:imagemagick
 
-#+HTML_HTML5_FANCY: t
-#+HTML_MATHJAX: tagside: left font: "TeX" path: "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-
+# #+HTML_HTML5_FANCY: t
+# #+HTML_MATHJAX: tagside: left font: "TeX" path: "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+# (setq org-latex-create-formula-image-program 'dvipng)
 
 
 Perceptron is a function with several inputs and one output that linearly combines the input and the internal weights and applies an activation function on the result.
 Weights are some values to be trained.
 Perceptron is a simplified model of a neuron with any number of inputs and one output.
 The activation function is /signum/, which returns a 1 if the input is greater than zero, and -1 otherwise.
+
 \[\mbox{y} = \mbox{sign}(\sum_{i}\mbox{w}_i \cdot \mbox{x}_i)\]
 
 Perceptron can be trained by correcting its weights by a small amount each time when it incorrectly classifies a training example.

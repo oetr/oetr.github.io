@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-11-10 Do 23:26 -->
+<!-- 2017-02-01 Mi 09:54 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Perceptron Convergence Theorem</title>
@@ -12,28 +12,6 @@
  />
 <meta  name="keywords" content="algorithm, algorithm of the week, learning, machine learning, neural network, perceptron, Racket" />
 <link rel='stylesheet' href='/css/site.css' type='text/css'/>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "left",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div id="content">
@@ -43,7 +21,10 @@ Perceptron is a function with several inputs and one output that linearly combin
 Weights are some values to be trained.
 Perceptron is a simplified model of a neuron with any number of inputs and one output.
 The activation function is <i>signum</i>, which returns a 1 if the input is greater than zero, and -1 otherwise.
-\[\mbox{y} = \mbox{sign}(\sum_{i}\mbox{w}_i \cdot \mbox{x}_i)\]
+</p>
+
+<p>
+<img src="ltxpng/perceptron_00265c8a07c17a5dce1423054045be4d4f883f90.png" alt="\[\mbox{y} = \mbox{sign}(\sum_{i}\mbox{w}_i \cdot \mbox{x}_i)\]" />
 </p>
 
 <p>
@@ -51,12 +32,12 @@ Perceptron can be trained by correcting its weights by a small amount each time 
 </p>
 
 <p>
-\[w_{new} = w_{old} + x \cdot \eta \cdot \mbox{error},\]
+<img src="ltxpng/perceptron_70aba201a5c8978e2f50f65a5246ffaf4f0d415f.png" alt="\[w_{new} = w_{old} + x \cdot \eta \cdot \mbox{error},\]" />
 </p>
 
 <p>
-where error is the difference between desired and actual outputs of the perceptron, and \(\eta\) is the learning rate that specifies how much the old weight should be moved and make the error a little bit smaller.
-\(\eta\) is typically a value between 0 and 1.0.
+where error is the difference between desired and actual outputs of the perceptron, and <img src="ltxpng/perceptron_a0ba694e98ab39f948115c01fd82d9708f0e4b00.png" alt="$\eta$" /> is the learning rate that specifies how much the old weight should be moved and make the error a little bit smaller.
+<img src="ltxpng/perceptron_a0ba694e98ab39f948115c01fd82d9708f0e4b00.png" alt="$\eta$" /> is typically a value between 0 and 1.0.
 </p>
 
 <p>
@@ -76,7 +57,7 @@ The position of the upper half moon is fixed, while the lower half moon can be f
 <p>
 The perceptron has 2 inputs: x and y coordinates of the training example.
 The dataset contains 5000 training examples randomly sampled from the half-moon distribution.
-The training is done using \(\eta\) = 0.3.
+The training is done using <img src="ltxpng/perceptron_a0ba694e98ab39f948115c01fd82d9708f0e4b00.png" alt="$\eta$" /> = 0.3.
 The weights are initialized randomly, and here you can see the trained perceptrons with 100 different initial weights:
 </p>
 
@@ -118,7 +99,7 @@ Here is an example of trained perceptrons over our half-moons distribution where
 
 <p>
 The error graph shows that increasing the number of training examples doesn't help, and the performance becomes worse.
-As \(n\) increases, more training examples are found inside the wrong half-moon and push the weights away from horizontal position of the decision boundary.
+As <img src="ltxpng/perceptron_d1054c57e8a56ba3651f7b54496d05f1f4abb705.png" alt="$n$" /> increases, more training examples are found inside the wrong half-moon and push the weights away from horizontal position of the decision boundary.
 Thus, the error becomes larger.
 </p>
 
