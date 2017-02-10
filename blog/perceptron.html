@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-01 Mi 09:54 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-02-10 Fr 01:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Perceptron Convergence Theorem</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="description" content="Repetition of perceptron convergence algorithm from Haykin's book"
+<meta name="generator" content="Org mode" />
+<meta name="description" content="Repetition of perceptron convergence algorithm from Haykin's book"
  />
-<meta  name="keywords" content="algorithm, algorithm of the week, learning, machine learning, neural network, perceptron, Racket" />
+<meta name="keywords" content="algorithm, algorithm of the week, learning, machine learning, neural network, perceptron, Racket" />
 <link rel='stylesheet' href='/css/site.css' type='text/css'/>
 </head>
 <body>
@@ -24,7 +24,8 @@ The activation function is <i>signum</i>, which returns a 1 if the input is grea
 </p>
 
 <p>
-<img src="ltxpng/perceptron_00265c8a07c17a5dce1423054045be4d4f883f90.png" alt="\[\mbox{y} = \mbox{sign}(\sum_{i}\mbox{w}_i \cdot \mbox{x}_i)\]" />
+<object type="image/svg+xml" data="ltximg/perceptron_2bdc1786eb02c9d9695708a3bb5c6577e533d1c0.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
 </p>
 
 <p>
@@ -32,12 +33,15 @@ Perceptron can be trained by correcting its weights by a small amount each time 
 </p>
 
 <p>
-<img src="ltxpng/perceptron_70aba201a5c8978e2f50f65a5246ffaf4f0d415f.png" alt="\[w_{new} = w_{old} + x \cdot \eta \cdot \mbox{error},\]" />
+<object type="image/svg+xml" data="ltximg/perceptron_4774feb95f88f2e2c252ada381c791856c190e4d.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
 </p>
 
 <p>
-where error is the difference between desired and actual outputs of the perceptron, and <img src="ltxpng/perceptron_a0ba694e98ab39f948115c01fd82d9708f0e4b00.png" alt="$\eta$" /> is the learning rate that specifies how much the old weight should be moved and make the error a little bit smaller.
-<img src="ltxpng/perceptron_a0ba694e98ab39f948115c01fd82d9708f0e4b00.png" alt="$\eta$" /> is typically a value between 0 and 1.0.
+where error is the difference between desired and actual outputs of the perceptron, and <object type="image/svg+xml" data="ltximg/perceptron_7841263d6144069d682261d6e4be45913effe8fe.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object> is the learning rate that specifies how much the old weight should be moved and make the error a little bit smaller.
+<object type="image/svg+xml" data="ltximg/perceptron_7841263d6144069d682261d6e4be45913effe8fe.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object> is typically a value between 0 and 1.0.
 </p>
 
 <p>
@@ -48,7 +52,7 @@ The position of the upper half moon is fixed, while the lower half moon can be f
 </p>
 
 
-<div id="orgparagraph1" class="figure">
+<div id="org086e5a7" class="figure">
 <p><img src="../images/data-example.jpg" alt="data-example.jpg" />
 </p>
 </div>
@@ -57,13 +61,14 @@ The position of the upper half moon is fixed, while the lower half moon can be f
 <p>
 The perceptron has 2 inputs: x and y coordinates of the training example.
 The dataset contains 5000 training examples randomly sampled from the half-moon distribution.
-The training is done using <img src="ltxpng/perceptron_a0ba694e98ab39f948115c01fd82d9708f0e4b00.png" alt="$\eta$" /> = 0.3.
+The training is done using <object type="image/svg+xml" data="ltximg/perceptron_7841263d6144069d682261d6e4be45913effe8fe.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object> = 0.3.
 The weights are initialized randomly, and here you can see the trained perceptrons with 100 different initial weights:
 </p>
 
 
 
-<div id="orgparagraph2" class="figure">
+<div id="org44db18a" class="figure">
 <p><img src="../images/training-01.jpg" alt="training-01.jpg" />
 </p>
 </div>
@@ -77,7 +82,7 @@ The curve was produced by averaging over 50 independent trials.
 
 
 
-<div id="orgparagraph3" class="figure">
+<div id="orgc32439f" class="figure">
 <p><img src="../images/error-rate-separable.jpg" alt="error-rate-separable.jpg" />
 </p>
 </div>
@@ -91,7 +96,7 @@ Here is an example of trained perceptrons over our half-moons distribution where
 
 
 
-<div id="orgparagraph4" class="figure">
+<div id="org4192e1b" class="figure">
 <p><img src="../images/nonseparable-01.jpg" alt="nonseparable-01.jpg" />
 </p>
 </div>
@@ -99,12 +104,13 @@ Here is an example of trained perceptrons over our half-moons distribution where
 
 <p>
 The error graph shows that increasing the number of training examples doesn't help, and the performance becomes worse.
-As <img src="ltxpng/perceptron_d1054c57e8a56ba3651f7b54496d05f1f4abb705.png" alt="$n$" /> increases, more training examples are found inside the wrong half-moon and push the weights away from horizontal position of the decision boundary.
+As <object type="image/svg+xml" data="ltximg/perceptron_58199a5456c6af107f6ae48293c635a1c794b09c.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object> increases, more training examples are found inside the wrong half-moon and push the weights away from horizontal position of the decision boundary.
 Thus, the error becomes larger.
 </p>
 
 
-<div id="orgparagraph5" class="figure">
+<div id="org6e8214b" class="figure">
 <p><img src="../images/error-rate-nonseparable.jpg" alt="error-rate-nonseparable.jpg" />
 </p>
 </div>
@@ -115,9 +121,9 @@ Implementation of perceptron convergence algorithm in Racket can be found in in 
 </p>
 
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">References</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-org780a1fe" class="outline-2">
+<h2 id="org780a1fe">References</h2>
+<div class="outline-text-2" id="text-org780a1fe">
 <div id="bibliography">
 
 <table>
@@ -139,9 +145,9 @@ S.&nbsp;Haykin, <em>Networks and Learning Machines</em>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">Comments</h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<div id="outline-container-org2d70e9f" class="outline-2">
+<h2 id="org2d70e9f">Comments</h2>
+<div class="outline-text-2" id="text-org2d70e9f">
 <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
 <script type="text/javascript">
   var disqus_shortname = 'oetrgithubcom';

@@ -12,9 +12,6 @@
 #+OPTIONS: tags:not-in-toc
 #+OPTIONS: creator:nil author:nil email:nil date:nil title:t html-style:nil html-scripts:nil
 
-# #+HTML_HTML5_FANCY: t
-# #+HTML_MATHJAX: tagside: left font: "TeX" path: "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-
 
 I like painting.
 
@@ -33,7 +30,7 @@ Soon thereafter, I found some more time and made a short video.
 
 * Comments
 # Disqus
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
 <script type="text/javascript">
   var disqus_shortname = 'oetrgithubcom';
@@ -48,7 +45,7 @@ Soon thereafter, I found some more time and made a short video.
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   }());
 </script>
-#+END_HTML
+#+END_EXPORT
 * LATEX HEADER                                                     :noexport:
 #+LaTeX_CLASS: org-article
 #+LaTeX_CLASS_OPTIONS: [koma,a4paper,12pt,microtype,paralist,nofloat,colorlinks=true,linkcolor=gray,urlcolor=blue,citecolor=blue]
