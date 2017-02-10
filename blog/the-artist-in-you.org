@@ -28,7 +28,6 @@ Soon thereafter, I found some more time and made a short video.
 
 #+HTML: <br><div class='footer'><a href="http://peter-samarin.de">[Peter Samarin]</a></div>
 
-* Comments
 * LATEX HEADER                                                     :noexport:
 #+LaTeX_CLASS: org-article
 #+LaTeX_CLASS_OPTIONS: [koma,a4paper,12pt,microtype,paralist,nofloat,colorlinks=true,linkcolor=gray,urlcolor=blue,citecolor=blue]
