@@ -2,10 +2,10 @@ body {
     font-size:1em;
     padding:0em;
     padding-top:0em;
-    margin:1em auto;
+    margin:2em;
     max-width:60em;
 }
-h1{text-align:center;}
+h1{text-align:left;}
 h2,h3 {
     line-height:1.2em;
 }

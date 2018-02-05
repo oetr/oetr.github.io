@@ -4,25 +4,13 @@
 #+AUTHOR:  Peter Samarin
 #+EMAIL:   peter.samarin@gmail.com
 #+DESCRIPTION: 
-#+KEYWORDS:    
+#+KEYWORDS: 
 #+LANGUAGE: en
-#+OPTIONS: H:3 num:nil toc:nil  \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: H:3 num:nil toc:nil  \n:nil @:t ::t |:t ^:t -:t f:t *:t <:nil
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
 #+OPTIONS: tags:not-in-toc
 #+OPTIONS: creator:nil author:nil email:nil date:nil title:nil
-
-
-#+HTML_CONTAINER: div
-#+HTML_DOCTYPE: xhtml-strict
-#+HTML_HEAD:
-#+HTML_HEAD_EXTRA:
-#+HTML_HTML5_FANCY:
-#+HTML_INCLUDE_SCRIPTS:
-#+HTML_INCLUDE_STYLE:
-#+HTML_LINK_HOME:
-#+HTML_LINK_UP:
-#+HTML_MATHJAX:
-#+INFOJS_OPT:
+#+HTML_HTML5_FANCY: t
 
 
 - [[file:./publications.org][Publications]]
