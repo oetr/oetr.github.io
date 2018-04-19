@@ -86,7 +86,7 @@ Implementation of perceptron convergence algorithm in Racket can be found in in 
 
 
 
-#+BIBLIOGRAPHY: ../bib/references ieeetr limit:t
+#+BIBLIOGRAPHY: ../bib/references ieeetr limit:t option:-u option:-unicode option:-html-entities option:-nobibsource
 
 #+HTML: <br><div class='footer'><a href="http://peter-samarin.de">[Peter Samarin]</a></div>
 
