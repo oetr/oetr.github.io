@@ -14,7 +14,7 @@
 #+OPTIONS: tex:dvisvgm
 #+PROPERTY: header-args :cache no
 
-# #+HTML_HEAD: <link href="../css/code.css" rel="stylesheet">
+#+HTML_HEAD: <link href="/css/code.css" rel="stylesheet">
 # #+HTML_HEAD: <link href="../css/site.css" rel="stylesheet">
 
 
