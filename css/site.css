@@ -2,8 +2,8 @@ body {
     font-size:1em;
     padding:0em;
     padding-top:0em;
-    margin:2em;
-    max-width:60em;
+    margin:1em;
+    max-width:40em;
 }
 h1{text-align:left;}
 h2,h3 {
@@ -17,6 +17,10 @@ p{
     font-size:1em;
     margin-top:1.5em;
     margin-bottom:1.5em;
+    margin-left: .5em;
+}
+#bibliography table {
+    margin-left: 0.5em;
 }
 @media print {
     body {

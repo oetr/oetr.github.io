@@ -1,0 +1,82 @@
+/* Set the colors in <pre> blocks from the Leuven theme */
+/*div.org-src-container::before {
+    content: "In: [" counter(code-block) "]\A\A";
+    float: left;
+    display: block;
+}*/
+div.org-src-container {
+    border:1px solid #a0a0a0;
+    margin-left:1em;
+    background-color:#f7f7f7;
+    border-radius:5px;
+    counter-increment: code-block;
+    display: table;
+}
+
+pre.src {
+    color:#000000;
+    margin-left:0.5em;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    margin-right:0.5em;
+}
+
+span                                     {color:#000000;}
+pre span.org-builtin                     {color:#006FE0;}
+pre span.org-string                      {color:#ff8c00;}
+pre span.org-doc                         {color:#008000;}
+pre span.org-keyword                     {color:#000000;font-weight:bold;}
+pre span.org-variable-name               {color:#050a0a;}
+pre span.org-function-name               {color:#000000;}
+pre span.org-type                        {color:#f0c674;}
+pre span.org-preprocessor                {color:#808080;font-weight:bold;}
+pre span.org-constant                    {color:#050d08;}
+pre span.org-comment-delimiter           {color:#8D8D84;}
+pre span.org-comment                     {color:#969896;font-style:italic}
+pre span.org-outshine-level-1            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-2            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-3            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-4            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-5            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-6            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-7            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-8            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-9            {color:#8D8D84;font-style:italic}
+pre span.org-rainbow-delimiters-depth-1  {color:black;}
+pre span.org-rainbow-delimiters-depth-2  {color:darkgreen;}
+pre span.org-rainbow-delimiters-depth-3  {color:darkgoldenrod;}
+pre span.org-rainbow-delimiters-depth-4  {color:#709870;}
+pre span.org-rainbow-delimiters-depth-5  {color:#907373;}
+pre span.org-rainbow-delimiters-depth-6  {color:#6276ba;}
+pre span.org-rainbow-delimiters-depth-7  {color:#858580;}
+pre span.org-rainbow-delimiters-depth-8  {color:#80a880;}
+pre span.org-rainbow-delimiters-depth-9  {color:#887070;}
+pre span.org-sh-quoted-exec              {color:#FF1493;}
+pre span.org-diff-added                  {color:#008000;}
+pre span.org-diff-changed                {color:#0000FF;}
+pre span.org-diff-header                 {color:#800000;}
+pre span.org-diff-hunk-header            {color:#990099;}
+pre span.org-diff-none                   {color:#545454;}
+pre span.org-diff-removed                {color:#A60000;}
+
+div.results {
+    font-size:0.8em;
+    background-color:lightgoldenrodyellow;
+    display:table;
+    border-radius:5px;
+    margin-left:0.5em;
+    margin-right:0.5em;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+}
+
+pre.example {
+    font-size:1em;
+    background-color:lightgoldenrodyellow;
+    display:table;
+    margin-left:3em;
+    margin-right:0.5em;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    box-shadow: -1px 2px 2px black;
+}

@@ -1,0 +1,186 @@
+#+STARTUP: overview
+#+COLUMNS: %80ITEM  %7CLOCKSUM(Clocked) %5TODO(State)
+#+TITLE:   Pearson Hashing
+#+AUTHOR:  Peter Samarin
+#+DATE:    29.05.2018
+#+EMAIL:   peter.samarin@gmail.com
+#+DESCRIPTION: 
+#+KEYWORDS:    
+#+LANGUAGE:    en
+#+OPTIONS: H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
+#+OPTIONS: tags:not-in-toc
+#+OPTIONS: creator:nil author:nil email:nil date:nil title:t html-style:nil html-scripts:nil
+#+OPTIONS: tex:dvisvgm
+#+PROPERTY: header-args :cache no
+
+# #+HTML_HEAD: <link href="../css/code.css" rel="stylesheet">
+# #+HTML_HEAD: <link href="../css/site.css" rel="stylesheet">
+
+
+Here is an implementation in Racket of the Pearson hash exercise from [[https://programmingpraxis.com/2018/05/25/pearson-hashing/][programming praxis]].
+It's based on a paper by [[https://www.epaperpress.com/vbhash/download/p677-pearson.pdf][Peter K. Pearson]] from 1990 cite:Pearson1990FastHashingofVariablelengthTextStrings.
+
+# Description of the hashing algorithm
+To compute the Pearson hash of a message, each byte of the message is subsequently added to the accumulated hash modulo 256 and looked up in a substitution table.
+The initial hash value is set to zero.
+The substitution table is a random permutation of 8-bit numbers.
+It is also possible to use =XOR= instead of addition modulo 256.
+Here is a procedure for generating random substitution tables using Racket's =shuffle=:
+#+begin_src racket :session *Racket* :exports both :results output
+  (define (generate-substitution-table)
+    (define original-table (range 256))
+    (list->vector (shuffle original-table)))
+
+  (define (print-table tbl)
+    (define row 0)
+    (for ([val tbl]
+          [i (vector-length tbl)])
+      (printf "~a " (~a val #:width 3 #:align 'right))
+      (when (zero? (modulo (+ i 1) 16))
+        (set! row (+ row 1))
+        (printf "\n"))))
+
+  (random-seed 0)
+  (define substitution-table (generate-substitution-table))
+  (print-table substitution-table)
+#+end_src
+
+This algorithm will compute a 8-bit hash for any message.
+To generate 16-bit hashes, the same message is hashed again, but this time, 1 is added to the first byte modulo 256.
+The second hash byte is appended to the first one.
+This can be extended to compute hashes longer than one byte.
+Though, after 256 bytes, the hash bytes will start repeating.
+
+#+begin_src racket :session *Racket* :exports code
+  (define (pearson-hash-n-bytes message tbl fn n)
+    (define result (make-vector n))
+    (for ([i n])
+      (vector-set! result i
+                   (for/fold ([sum i]) ([byte message])
+                     (vector-ref tbl (fn sum byte)))))
+    result)
+
+  (define (+mod256 a b) (modulo (+ a b) 256))
+#+end_src
+
+Let's compute the hash for some messages.
+#+begin_src racket :session *Racket* :exports both :results value
+  (define message #"Programming Praxis")
+
+  (pearson-hash-n-bytes message substitution-table bitwise-xor 1)
+#+end_src
+
+
+And here is computation of Pearson hashes side by side using two procedures: addition modulo 256 and =XOR=.
+#+begin_src racket :session *Racket* :exports both :results output verbatim
+  (for ([n-bytes (range 1 11)])
+    (printf "~a: ~a ~a~n" 
+            (~a #:min-width 2 #:align 'right n-bytes)
+            (~a #:min-width 40
+                (pearson-hash-n-bytes message substitution-table +mod256 n-bytes))
+            (pearson-hash-n-bytes message substitution-table bitwise-xor n-bytes)))
+#+end_src
+
+
+A sequence of numbers is ideal for representing a hash value, but is nicer to read in string form.
+Here is a procedure for converting sequences of numbers into strings of hex numbers.
+#+begin_src racket :session *Racket* :exports both :results output verbatim
+  (define (hash-vector->string hash-vec)
+    (for/fold ([result ""]) ([byte hash-vec])
+      (~a result (~r byte #:base 16 #:min-width 2 #:pad-string "0"))))
+
+  (printf "~a\n" (hash-vector->string #(1 2 3)))
+  (printf "~a\n" (hash-vector->string (range 0 32)))
+#+end_src
+
+
+#+BIBLIOGRAPHY: ../bib/references acm limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
+
+
+#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">[Peter Samarin]</a></div>
+
+
+* LATEX HEADER                                                     :noexport:
+#+LaTeX_CLASS: org-article
+#+LaTeX_CLASS_OPTIONS: [koma,a4paper,12pt,microtype,paralist,nofloat,colorlinks=true,linkcolor=gray,urlcolor=blue,citecolor=blue]
+# FONT: Charter combined with Bera->replaced with inconsolata (first 2 from charter, one from bera)
+# Packages
+#+LATEX_HEADER: \usepackage[ngerman, num]{isodate}
+#+LATEX_HEADER: \usepackage[utf8x]{inputenc}
+#+LATEX_HEADER: \usepackage[ngerman]{babel} % this is needed for umlauts
+#+LaTeX_HEADER: \usepackage[T1]{fontenc} 
+#+LaTeX_HEADER: \usepackage[bitstream-charter]{mathdesign}
+#+LaTeX_HEADER: \usepackage[scaled=.9]{helvet}
+#+LaTeX_HEADER: \usepackage[scaled]{beramono}
+#+LaTeX_HEADER: \usepackage{inconsolata}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+
+#+LATEX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER: \usepackage{lastpage}
+#+LATEX_HEADER: \usepackage[nottoc]{tocbibind}
+#+LaTeX_HEADER: \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+#+LaTeX_HEADER: \definecolor{webgreen}{rgb}{0,.5,0}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \pagestyle{empty}
+
+#+LaTeX_HEADER: \usepackage{longtable}
+#+LaTeX_HEADER: \usepackage{indentfirst}
+#+LaTeX_HEADER: \usepackage{float}
+#+LATEX_HEADER: \usepackage{subfigure}
+#+LaTeX_HEADER: \usepackage[format=plain,font=small]{caption}
+#+LaTeX_HEADER: \usepackage[german,capitalise]{cleveref} % Has to be loaded after hyperref
+
+# Make listings copyable
+#+LaTeX_HEADER: \usepackage{listings}
+#+LaTeX_HEADER: \definecolor{light-gray}{gray}{0.93}
+#+LaTeX_HEADER: \definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+#+LaTeX_HEADER: \definecolor{greencomments}{rgb}{0,0.5,0}
+#+LaTeX_HEADER: \definecolor{redstrings}{rgb}{0.9,0,0}
+
+#+LATEX_HEADER: \lstset{keepspaces=false,
+#+LATEX_HEADER: basicstyle=\footnotesize\ttfamily,
+#+LATEX_HEADER: frame=L,
+#+LATEX_HEADER: backgroundcolor=\color{light-gray},
+#+LATEX_HEADER: extendedchars=true,
+#+LATEX_HEADER: upquote=true,
+#+LATEX_HEADER: showspaces=true,
+#+LATEX_HEADER: showtabs=true,
+#+LATEX_HEADER: breaklines=true,
+#+LATEX_HEADER: showstringspaces=true,
+#+LATEX_HEADER: breakatwhitespace=true, 
+#+LATEX_HEADER: numbers=left,numberstyle=\tiny\color{gray},numbersep=10pt,stepnumber=1,firstnumber=1,numberfirstline=false,
+#+LATEX_HEADER: keywordstyle=\color{bluekeywords},
+#+LATEX_HEADER: stringstyle=\color{redstrings},
+#+LATEX_HEADER: commentstyle=\color{greencomments},
+#+LATEX_HEADER: literate={*}{{\char42}}1
+#+LATEX_HEADER:          {\ }{{\copyablespace}}1}
+
+
+#+LATEX_HEADER: \usepackage[space=true]{accsupp}
+#+LATEX_HEADER: \newcommand{\copyablespace}{\BeginAccSupp{method=hex,unicode,ActualText=00A0}\ \EndAccSupp{}}
+
+#+LATEX_HEADER: \usepackage{ifthen} % Allows the user of the \ifthenelse command
+#+LATEX_HEADER: \newboolean{enable-backrefs} % Variable to enable backrefs in the bibliography
+#+LATEX_HEADER: \setboolean{enable-backrefs}{false} % Variable value: true or false
+
+#+LATEX_HEADER: \newcommand{\backrefnotcitedstring}{\relax} % (Not cited.)
+#+LATEX_HEADER: \newcommand{\backrefcitedsinglestring}[1]{(cited on p. ~#1)}
+#+LATEX_HEADER: \newcommand{\backrefcitedmultistring}[1]{(cited on pp. ~#1.)}
+#+LATEX_HEADER: \ifthenelse{\boolean{enable-backrefs}} % If backrefs were enabled
+#+LATEX_HEADER: {
+#+LATEX_HEADER: \PassOptionsToPackage{hyperpageref}{backref}
+#+LATEX_HEADER: \usepackage{backref} % to be loaded after hyperref package 
+#+LATEX_HEADER: \renewcommand{\backreftwosep}{, ~} % separate 2 pages
+#+LATEX_HEADER: \renewcommand{\backreflastsep}{, ~} % separate last of longer list
+#+LATEX_HEADER: \renewcommand*{\backref}[1]{}  % disable standard
+#+LATEX_HEADER: \renewcommand*{\backrefalt}[4]{% detailed backref
+#+LATEX_HEADER: \ifcase #1 
+#+LATEX_HEADER: \backrefnotcitedstring
+#+LATEX_HEADER: \or
+#+LATEX_HEADER: \backrefcitedsinglestring{#2}
+#+LATEX_HEADER: \else
+#+LATEX_HEADER: \backrefcitedmultistring{#2}
+#+LATEX_HEADER: \fi}
+#+LATEX_HEADER: }{\relax}

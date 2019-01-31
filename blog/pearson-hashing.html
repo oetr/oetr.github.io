@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-01-31 Do 22:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pearson Hashing</title>
+<meta name="generator" content="Org mode" />
+<link rel='stylesheet' href='/css/site.css' type='text/css'/>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Pearson Hashing</h1>
+<p>
+Here is an implementation in Racket of the Pearson hash exercise from <a href="https://programmingpraxis.com/2018/05/25/pearson-hashing/">programming praxis</a>.
+It's based on a paper by <a href="https://www.epaperpress.com/vbhash/download/p677-pearson.pdf">Peter K. Pearson</a> from 1990 [<a href="#Pearson1990FastHashingofVariablelengthTextStrings">1</a>].
+</p>
+
+<p>
+To compute the Pearson hash of a message, each byte of the message is subsequently added to the accumulated hash modulo 256 and looked up in a substitution table.
+The initial hash value is set to zero.
+The substitution table is a random permutation of 8-bit numbers.
+It is also possible to use <code>XOR</code> instead of addition modulo 256.
+Here is a procedure for generating random substitution tables using Racket's <code>shuffle</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">generate-substitution-table</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-variable-name">original-table</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">range</span> <span class="org-racket-selfeval">256</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">list-&gt;vector</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">shuffle</span> original-table<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print-table</span> tbl<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-variable-name">row</span> <span class="org-racket-selfeval">0</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>val tbl<span class="org-rainbow-delimiters-depth-4">]</span>
+        <span class="org-rainbow-delimiters-depth-4">[</span>i <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-builtin">vector-length</span> tbl<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">printf</span> <span class="org-string">"~a "</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">~a</span> val <span class="org-racket-keyword-argument">#:width</span> <span class="org-racket-selfeval">3</span> <span class="org-racket-keyword-argument">#:align</span> <span class="org-racket-selfeval">'right</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">zero?</span> <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-builtin">modulo</span> <span class="org-rainbow-delimiters-depth-6">(</span><span class="org-builtin">+</span> i <span class="org-racket-selfeval">1</span><span class="org-rainbow-delimiters-depth-6">)</span> <span class="org-racket-selfeval">16</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">set!</span> row <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-builtin">+</span> row <span class="org-racket-selfeval">1</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">printf</span> <span class="org-string">"\n"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">random-seed</span> <span class="org-racket-selfeval">0</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">substitution-table</span> <span class="org-rainbow-delimiters-depth-2">(</span>generate-substitution-table<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>print-table substitution-table<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+ 80 245 227  73 137 130 182 255 122  18 200 204   5 150 133 125 
+ 14 123  30 209  16  93 139 110 244 111 213 102  21 135  26   8 
+214  91  13  87  36 235 226  67 246 145  48 188 208 219  66 180 
+ 25 131 233  42 193  90 172 239  29  52 101 184 170  55 241   7 
+134 194  77 196  43 177 232   4 234  20 140 112   2 173  12  37 
+147  81 142 178  89  53  32  46  38 141 109 169  84  41  35  86 
+156 126  39 155  70 253 222  63 237  47   3 162  97 199 212 151 
+197  19 132 176 252 157 242 113  94 247 159 190 189 107  83  58 
+114 161 223  92  40 211  74 215   0  71 236 119  99  54  85 202 
+191 124   1  56 149 165 186 105  34 243 121 206  33 250 217  49 
+103 220 183  27 118 195  72  62  22   9 166 128 205 181 117  45 
+216   6 192  76 231 136  79  31 164 221 163 129 185 228  98  68 
+ 11 144  50 249  59 160  61  60 116  17  23 168 153  57 143  95 
+ 88 198  24  51 146  64 138  65 225  69 152 108 218  78 154 201 
+187  75 240 148  82 203  96 207 171 179 254 127 248 174 115  44 
+106 210 251  15 100 229 238 120 167 175 224  10 104 230  28 158 
+</pre>
+
+<p>
+This algorithm will compute a 8-bit hash for any message.
+To generate 16-bit hashes, the same message is hashed again, but this time, 1 is added to the first byte modulo 256.
+The second hash byte is appended to the first one.
+This can be extended to compute hashes longer than one byte.
+Though, after 256 bytes, the hash bytes will start repeating.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">pearson-hash-n-bytes</span> message tbl fn n<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-variable-name">result</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">make-vector</span> n<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>i n<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">vector-set!</span> result i
+                 <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">for/fold</span> <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-rainbow-delimiters-depth-6">[</span>sum i<span class="org-rainbow-delimiters-depth-6">]</span><span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-rainbow-delimiters-depth-6">[</span>byte message<span class="org-rainbow-delimiters-depth-6">]</span><span class="org-rainbow-delimiters-depth-5">)</span>
+                   <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-builtin">vector-ref</span> tbl <span class="org-rainbow-delimiters-depth-6">(</span>fn sum byte<span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  result<span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">+mod256</span> a b<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">modulo</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">+</span> a b<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-racket-selfeval">256</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Let's compute the hash for some messages.
+</p>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">message</span> #<span class="org-string">"Programming Praxis"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>pearson-hash-n-bytes message substitution-table <span class="org-builtin">bitwise-xor</span> <span class="org-racket-selfeval">1</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#(11)
+
+</pre>
+
+
+<p>
+And here is computation of Pearson hashes side by side using two procedures: addition modulo 256 and <code>XOR</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">for</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>n-bytes <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">range</span> <span class="org-racket-selfeval">1</span> <span class="org-racket-selfeval">11</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">printf</span> <span class="org-string">"~a: ~a ~a~n"</span> 
+          <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">~a</span> <span class="org-racket-keyword-argument">#:min-width</span> <span class="org-racket-selfeval">2</span> <span class="org-racket-keyword-argument">#:align</span> <span class="org-racket-selfeval">'right</span> n-bytes<span class="org-rainbow-delimiters-depth-3">)</span>
+          <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">~a</span> <span class="org-racket-keyword-argument">#:min-width</span> <span class="org-racket-selfeval">40</span>
+              <span class="org-rainbow-delimiters-depth-4">(</span>pearson-hash-n-bytes message substitution-table +mod256 n-bytes<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+          <span class="org-rainbow-delimiters-depth-3">(</span>pearson-hash-n-bytes message substitution-table <span class="org-builtin">bitwise-xor</span> n-bytes<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+ 1: #(20)                                    #(11)
+ 2: #(20 101)                                #(11 95)
+ 3: #(20 101 29)                             #(11 95 132)
+ 4: #(20 101 29 175)                         #(11 95 132 159)
+ 5: #(20 101 29 175 14)                      #(11 95 132 159 35)
+ 6: #(20 101 29 175 14 75)                   #(11 95 132 159 35 14)
+ 7: #(20 101 29 175 14 75 170)               #(11 95 132 159 35 14 155)
+ 8: #(20 101 29 175 14 75 170 6)             #(11 95 132 159 35 14 155 219)
+ 9: #(20 101 29 175 14 75 170 6 179)         #(11 95 132 159 35 14 155 219 86)
+10: #(20 101 29 175 14 75 170 6 179 67)      #(11 95 132 159 35 14 155 219 86 85)
+</pre>
+
+
+<p>
+A sequence of numbers is ideal for representing a hash value, but is nicer to read in string form.
+Here is a procedure for converting sequences of numbers into strings of hex numbers.
+</p>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">hash-vector-&gt;string</span> hash-vec<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for/fold</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>result <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>byte hash-vec<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">~a</span> result <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">~r</span> byte <span class="org-racket-keyword-argument">#:base</span> <span class="org-racket-selfeval">16</span> <span class="org-racket-keyword-argument">#:min-width</span> <span class="org-racket-selfeval">2</span> <span class="org-racket-keyword-argument">#:pad-string</span> <span class="org-string">"0"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">printf</span> <span class="org-string">"~a\n"</span> <span class="org-rainbow-delimiters-depth-2">(</span>hash-vector-&gt;string #<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-racket-selfeval">1</span> <span class="org-racket-selfeval">2</span> <span class="org-racket-selfeval">3</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">printf</span> <span class="org-string">"~a\n"</span> <span class="org-rainbow-delimiters-depth-2">(</span>hash-vector-&gt;string <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">range</span> <span class="org-racket-selfeval">0</span> <span class="org-racket-selfeval">32</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+010203
+000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+
+</pre>
+
+
+<div id="bibliography">
+<h2>References</h2>
+
+<table>
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="Pearson1990FastHashingofVariablelengthTextStrings">1</a>]
+</td>
+<td class="bibtexitem">
+Pearson, P.&nbsp;K.
+ Fast hashing of variable-length text strings.
+ <em>Commun. ACM 33</em>, 6 (June 1990), 677&ndash;680.
+[&nbsp;<a href="http://dx.doi.org/10.1145/78973.78978">DOI</a>&nbsp;| 
+<a href="http://doi.acm.org/10.1145/78973.78978">http</a>&nbsp;]
+
+</td>
+</tr>
+</table>
+</div>
+
+
+<br><div class='footer'><a href="http://peter-samarin.de">[Peter Samarin]</a></div>
+</div>
+</body>
+</html>
