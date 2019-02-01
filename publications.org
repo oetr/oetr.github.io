@@ -9,7 +9,9 @@
 #+OPTIONS: H:3 num:nil toc:nil  \n:nil @:t ::t |:t ^:t -:t f:t *:t <:nil
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
 #+OPTIONS: tags:not-in-toc
-#+OPTIONS: creator:nil author:nil email:nil date:nil title:t html-style:nil html-scripts:nil timestamp:t
+#+OPTIONS: creator:nil author:nil email:nil date:nil title:nil html-style:nil html-scripts:nil timestamp:nil
+#+OPTIONS: html-preamble:"%C"
+#+OPTIONS: html-postamble:nil
 #+HTML_HTML5_FANCY: t
 
 #+HTML_HEAD_EXTRA: <link href="/css/publications.css" rel="stylesheet">
