@@ -10,7 +10,7 @@
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
 #+OPTIONS: tags:not-in-toc
 #+OPTIONS: creator:nil author:nil email:nil date:nil title:nil html-style:nil html-scripts:nil timestamp:nil
-#+OPTIONS: html-preamble:"%C"
+#+OPTIONS: html-preamble:nil
 #+OPTIONS: html-postamble:nil
 #+HTML_HTML5_FANCY: t
 
