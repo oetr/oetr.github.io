@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Turtle Language</title>
+<meta name="generator" content="Org mode" />
+<link href="./css/code.css" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class="title">Turtle Language</h1>
+          <p class="date">8 June 2018</p>
+</div>
+<div id="content">
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> <span class="org-string">"../src/Racket/turtle/turtle-graphics.rkt"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<table border="0px solid black">
+<tr>
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>forward <span class="org-racket-selfeval">100</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>turn <span class="org-racket-selfeval">90</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>forward <span class="org-racket-selfeval">150</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>turn <span class="org-racket-selfeval">-45</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>back <span class="org-racket-selfeval">100</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>turn <span class="org-racket-selfeval">-45</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>penup<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>forward <span class="org-racket-selfeval">100</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>pendown<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>forward <span class="org-racket-selfeval">100</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle0.png" alt="first-turtle0.png" />
+</p>
+</div>
+
+</td>
+
+
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">arcr</span> r deg<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>i deg<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>forward r<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>turn <span class="org-racket-selfeval">1</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">circles</span> n<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>i n<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>arcr <span class="org-racket-selfeval">1</span> <span class="org-racket-selfeval">360</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>turn <span class="org-racket-selfeval">40</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>circles <span class="org-racket-selfeval">9</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle1.png" alt="first-turtle1.png" />
+</p>
+</div>
+
+</td>
+
+
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">poly</span> side <span class="org-builtin">angle</span> steps<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>step steps<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>forward side<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>turn <span class="org-builtin">angle</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>poly <span class="org-racket-selfeval">100</span> <span class="org-racket-selfeval">72</span> <span class="org-racket-selfeval">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle2.png" alt="first-turtle2.png" />
+</p>
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+<table border="0px solid black">
+<tr>
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>poly <span class="org-racket-selfeval">100</span> <span class="org-racket-selfeval">60</span> <span class="org-racket-selfeval">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle21.png" alt="first-turtle21.png" />
+</p>
+</div>
+
+</td>
+
+
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>poly <span class="org-racket-selfeval">50</span> <span class="org-racket-selfeval">18</span> <span class="org-racket-selfeval">20</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle22.png" alt="first-turtle22.png" />
+</p>
+</div>
+
+</td>
+</tr>
+</table>
+
+
+<table border="0px solid black">
+<tr>
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">newpoly</span> side <span class="org-builtin">angle</span> steps<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>step steps<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>forward side<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>turn <span class="org-builtin">angle</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>forward side<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>turn <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">*</span> <span class="org-racket-selfeval">2</span> <span class="org-builtin">angle</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>newpoly <span class="org-racket-selfeval">100</span> <span class="org-racket-selfeval">72</span> <span class="org-racket-selfeval">5</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle3.png" alt="first-turtle3.png" />
+</p>
+</div>
+
+</td>
+
+
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>poly <span class="org-racket-selfeval">100</span> <span class="org-racket-selfeval">121</span> <span class="org-racket-selfeval">20</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle4.png" alt="first-turtle4.png" />
+</p>
+</div>
+
+</td>
+</tr>
+</table>
+
+
+<table>
+<tr>
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">polyspi</span> side <span class="org-builtin">angle</span> steps<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">&gt;=</span> steps <span class="org-racket-selfeval">1</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>forward side<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>turn <span class="org-builtin">angle</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>polyspi <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">+</span> side <span class="org-racket-selfeval">2</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-builtin">angle</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">-</span> steps <span class="org-racket-selfeval">1</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>polyspi <span class="org-racket-selfeval">10</span> <span class="org-racket-selfeval">95</span> <span class="org-racket-selfeval">100</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle5.png" alt="first-turtle5.png" />
+</p>
+</div>
+
+</td>
+
+<td>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>clear <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>polyspi <span class="org-racket-selfeval">10</span> <span class="org-racket-selfeval">70</span> <span class="org-racket-selfeval">100</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>show<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/turtle/first-turtle6.png" alt="first-turtle6.png" />
+</p>
+</div>
+
+</td>
+</tr>
+
+</table>
+
+
+<br><div class='footer'><a href="http://peter-samarin.de">(home)</a></div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>

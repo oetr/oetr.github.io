@@ -11,6 +11,9 @@
 !*.css
 !*.js
 
+# source code
+!*.rkt
+
 # images
 !*.svg
 !*.svgz
@@ -26,4 +29,6 @@
 !images/
 !css/
 !js/
+!src/
+!*/
 
