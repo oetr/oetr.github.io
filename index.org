@@ -16,8 +16,8 @@
 
 
 - [[file:./publications.org][Publications]]
-- [[file:blog/perceptron.org][Perceptron Convergence Theorem]]
-- [[file:blog/the-artist-in-you.org][The Artist in You]]
-- [[file:blog/pearson-hashing.org][Pearson Hashing]]
 - [[file:blog/turtle.org][Turtle Language]]
-# - [[file:blog/n-armed-bandits.org][N-Armed Bandits]]
+- [[file:blog/pearson-hashing.org][Pearson Hashing]]
+- [[file:blog/the-artist-in-you.org][The Artist in You]]
+- [[file:blog/perceptron.org][Perceptron Convergence Theorem]]
+
