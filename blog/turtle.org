@@ -14,8 +14,7 @@
 #+OPTIONS: tex:dvisvgm
 #+BIND: org-latex-image-default-width nil
 
-
-#+HTML_HEAD: <link href="./css/code.css" rel="stylesheet">
+#+HTML_HEAD_EXTRA: <link href="/css/code.css" rel="stylesheet">
 
 #+begin_src racket :session *Racket* :exports code
   (require "../src/Racket/turtle/turtle-graphics.rkt")
