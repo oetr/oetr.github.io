@@ -18,7 +18,7 @@
 
 
 Here is an implementation in Racket of the Pearson hash exercise from [[https://programmingpraxis.com/2018/05/25/pearson-hashing/][programming praxis]].
-It's based on a paper by [[https://www.epaperpress.com/vbhash/download/p677-pearson.pdf][Peter K. Pearson]] from 1990 cite:Pearson1990FastHashingofVariablelengthTextStrings.
+It's based on a [[https://www.epaperpress.com/vbhash/download/p677-pearson.pdf][paper]] by Peter K. Pearson from 1990 cite:Pearson1990FastHashingofVariablelengthTextStrings.
 
 # Description of the hashing algorithm
 To compute the Pearson hash of a message, each byte of the message is subsequently added to the accumulated hash modulo 256 and looked up in a substitution table.

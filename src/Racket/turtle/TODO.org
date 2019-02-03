@@ -1,0 +1,5 @@
+* Remove global state variables
+* Separate drawing and exporting
+- don't draw right away. Instead record all drawing operations
+- keep track of how big of a canvas we will need when exporting
+- export to png/pdf/svg/eps whatever
