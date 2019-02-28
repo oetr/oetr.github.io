@@ -16,11 +16,16 @@
 
 #+HTML_HEAD_EXTRA: <link href="/css/code.css" rel="stylesheet">
 
+
+cite:Abelson1980Turtlegeometry
+
 #+begin_src racket :session *Racket* :exports code
+  ;;#lang racket
   (require "../src/Racket/turtle/turtle-graphics.rkt")
 #+end_src
 
-#+HTML: <table border="0px solid black">
+
+#+HTML: <table border="1px solid black">
 #+HTML: <tr>
 #+HTML: <td>
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle0.png
@@ -32,8 +37,6 @@
   (back 100)
   (turn -45)
   (penup)
-  (forward 100)
-  (pendown)
   (forward 100)
   (show)
 #+end_src
@@ -164,6 +167,7 @@
 
 #+HTML: </table>
 
+#+BIBLIOGRAPHY: ../bib/references plain limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
 
 #+HTML: <br><div class='footer'><a href="http://peter-samarin.de">(home)</a></div>
 

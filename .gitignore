@@ -20,6 +20,10 @@
 !*.jpg
 !*.png
 
+# videos
+!*.mp4
+!*.webm
+
 
 # Directories
 !bib/
