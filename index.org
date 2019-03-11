@@ -16,7 +16,7 @@
 
 
 - [[file:./publications.org][Publications]]
-- [[file:blog/turtle.org][Turtle Language]]
+- [[file:blog/turtle.org][Fun with Turtle Geometry]]
 - [[file:blog/pearson-hashing.org][Pearson Hashing]]
 - [[file:blog/the-artist-in-you.org][The Artist in You]]
 - [[file:blog/perceptron.org][Perceptron Convergence Theorem]]
