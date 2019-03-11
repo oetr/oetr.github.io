@@ -19,8 +19,11 @@
 
 cite:Abelson1980Turtlegeometry
 
+#+begin_src racket :exports code
+#lang racket
+#+end_src
 #+begin_src racket :session *Racket* :exports code
-  ;;#lang racket
+  
   (require "../src/Racket/turtle/turtle-graphics.rkt")
 #+end_src
 
