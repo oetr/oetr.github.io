@@ -1,6 +1,6 @@
 #+STARTUP: overview
 #+COLUMNS: %80ITEM  %7CLOCKSUM(Clocked) %5TODO(State)
-#+TITLE:   Turtle Language
+#+TITLE:   Fun with Turtle Geometry
 #+AUTHOR:  Peter Samarin
 #+DATE:    8 June 2018
 #+EMAIL:   peter.samarin@gmail.com
@@ -16,17 +16,17 @@
 
 #+HTML_HEAD_EXTRA: <link href="/css/code.css" rel="stylesheet">
 
-
-cite:Abelson1980Turtlegeometry
+"Turtle Geometry" cite:Abelson1980Turtlegeometry is an excellent book that shows how far one can get with a little coding.
+The program to turtle can be found [[file:../src/Racket/turtle/turtle-graphics.rkt][here]], written in Racket.
 
 #+begin_src racket :exports code
-#lang racket
-#+end_src
-#+begin_src racket :session *Racket* :exports code
-  
+  #lang racket
   (require "../src/Racket/turtle/turtle-graphics.rkt")
 #+end_src
 
+#+begin_src racket :session *Racket* :exports none
+  (require "../src/Racket/turtle/turtle-graphics.rkt")  
+#+end_src
 
 #+HTML: <table border="1px solid black">
 #+HTML: <tr>
