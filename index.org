@@ -9,7 +9,7 @@
 #+OPTIONS: H:3 num:nil toc:nil  \n:nil @:t ::t |:t ^:t -:t f:t *:t <:nil
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
 #+OPTIONS: tags:not-in-toc
-#+OPTIONS: creator:t author:nil email:nil date:t title:nil timestamp:t
+#+OPTIONS: creator:t author:nil email:nil date:nil title:nil timestamp:t
 #+OPTIONS: html-preamble:nil
 #+OPTIONS: html-postamble:"%C"
 #+HTML_HTML5_FANCY: t
