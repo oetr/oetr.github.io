@@ -16,8 +16,11 @@
 
 #+HTML_HEAD_EXTRA: <link href="/css/code.css" rel="stylesheet">
 
-"Turtle Geometry" cite:Abelson1980Turtlegeometry is an excellent book that shows how far one can get with a little coding.
-The program to turtle can be found [[file:../src/Racket/turtle/turtle-graphics.rkt][here]], written in Racket.
+/Turtle Geometry/ cite:Abelson1980Turtlegeometry is an excellent book that shows how far one can get with a little coding.
+The library to turtle can be found [[file:../src/Racket/turtle/turtle-graphics.rkt][here]].
+It's written in Racket.
+Though not the finest example of my coding skills, it does allow me to tak the code examples from the book without much conversion.
+
 
 #+begin_src racket :exports code
   #lang racket
@@ -170,9 +173,20 @@ The program to turtle can be found [[file:../src/Racket/turtle/turtle-graphics.r
 
 #+HTML: </table>
 
+
+* Random Walk
+TODOS: 
+- resize canvas automatically, simplify examples
+- trader turtles
+- robot turtles
+- growing turtles
+
+
+
+
 #+BIBLIOGRAPHY: ../bib/references plain limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
 
-#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">(home)</a></div>
+#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
 
 
 * LATEX HEADER                                                     :noexport:

@@ -97,7 +97,7 @@ Here is a procedure for converting sequences of numbers into strings of hex numb
 #+BIBLIOGRAPHY: ../bib/references acm limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
 
 
-#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">(home)</a></div>
+#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
 
 
 * LATEX HEADER                                                     :noexport:
