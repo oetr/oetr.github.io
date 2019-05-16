@@ -26,7 +26,7 @@ Soon thereafter, I found some more time and made a short video.
 #+HTML: <video width="560" height="315" controls preload> <source src="../videos/Painting-of-the-week.mp4"></source> </video>
 
 
-#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
+#+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
 
 
 

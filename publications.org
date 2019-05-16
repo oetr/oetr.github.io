@@ -16,14 +16,18 @@
 
 #+HTML_HEAD_EXTRA: <link href="/css/publications.css" rel="stylesheet">
 
- 
+* Refereed Journal Papers
+ #+BEGIN_publications
+- *Detection of Counterfeit ICs Using Public Identification Sequences and Side-Channel Leakage* [[./bib/OwnPublications/2019-ieee-tifs-paper.pdf][paper]], [[https://doi.org/10.1109/TIFS.2018.2866333][DOI]] @@html:<br>@@  @@html:<font color=purple>@@Peter Samarin and Kerstin Lemke-Rust@@html:</font>@@ (@@html:<font color=olive>@@2019@@html:</font>@@), @@html:<em><font color=gray>@@IEEE Transactions on Information Forensics and Security @@html:</font></em>@@, volume 14, issue 3, pages 803--813, March 2019.
+#+END_publications
+
 * Refereed Papers
 #+BEGIN_publications
 - *Detecting Similar Code Segments through Side Channel Leakage in Microcontrollers* [[./bib/OwnPublications/2017-icisc-paper.pdf][paper]], [[./bib/OwnPublications/2017-icisc-presentation.pdf][presentation]], [[https://doi.org/10.1007/978-3-319-78556-1_9][DOI]] @@html:<br>@@  @@html:<font color=purple>@@Peter Samarin and Kerstin Lemke-Rust@@html:</font>@@ (@@html:<font color=olive>@@2017@@html:</font>@@), @@html:<em><font color=gray>@@Information Security and Cryptology - ICISC 2017@@html:</font></em>@@, volume 10779 of /LNCS/, pages 155--174. Springer International Publishing.
 
 - *Fault-Channel Watermarks* [[./bib/OwnPublications/2016-wistp-paper.pdf][paper]], [[./bib/OwnPublications/2016-wistp-presentation-samarin.pdf][presentation]], [[http://dx.doi.org/10.1007/978-3-319-45931-8_13][DOI]] @@html:<br>@@  @@html:<font color=purple>@@Peter Samarin, Alexander Skripnik, and Kerstin Lemke-Rust@@html:</font>@@ (@@html:<font color=olive>@@2016@@html:</font>@@), @@html:<em><font color=gray>@@Information Security Theory and Practice: 10th IFIP WG 11.2 International Conference, (WISTP'2016), Heraklion, Greece, September 26--27, 2016@@html:</font></em>@@, volume 9895 of LNCS, pages 204–219. Springer International Publishing, Cham.
 
-- *IP Core Protection using Voltage-Controlled Side-Channel Receivers* [[./bib/OwnPublications/2016-host-paper.pdf][paper]], [[./bib/OwnPublications/2016-host-presentation-samarin.pdf][presentation]], [[http://dx.doi.org/10.1109/HST.2016.7495585][DOI]] @@html:<br>@@ @@html:<font color=purple>@@Peter Samarin, Kerstin Lemke-Rust, and Christof Paar@@html:</font>@@ (@@html:<font color=olive>@@2016@@html:</font>@@), @@html:<em><font color=gray>@@2016 IEEE International Symposium on Hardware-Oriented Security and Trust (HOST) (May 2016)@@html:</font></em>@@, pp. 217--222.
+- *IP Core Protection using Voltage-Controlled Side-Channel Receivers* [[./bib/OwnPublications/2016-host-paper.pdf][paper]], [[./bib/OwnPublications/2016-host-presentation-samarin.pdf][presentation]], [[http://dx.doi.org/10.1109/HST.2016.7495585][DOI]] @@html:<br>@@ @@html:<font color=purple>@@Peter Samarin, Kerstin Lemke-Rust, and Christof Paar@@html:</font>@@ (@@html:<font color=olive>@@2016@@html:</font>@@), @@html:<em><font color=gray>@@2016 IEEE International Symposium on Hardware-Oriented Security and Trust (HOST) (May 2016)@@html:</font></em>@@, pages 217--222.
 
 - *Remote IP Protection Using Timing Channels* [[./bib/OwnPublications/2015-icisc-paper.pdf][paper]], [[./bib/OwnPublications/2015-icisc-presentation.pdf][presentation]], [[http://dx.doi.org/10.1007/978-3-319-15943-0_14][DOI]] @@html:<br>@@ @@html:<font color=purple>@@Ariano-Tim Donda, Peter Samarin, Jacek Samotyja, Kerstin Lemke-Rust, and Christof Paar@@html:</font>@@ (@@html:<font color=olive>@@2015@@html:</font>@@), @@html:<em><font color=gray>@@Information Security and Cryptology - ICISC 2014@@html:</font></em>@@, volume 8949 of /LNCS/, pages 222--237. Springer International Publishing.
 
@@ -31,6 +35,6 @@
 
 #+END_publications
 
-# #+BIBLIOGRAPHY: ./bib/publications acm  option:-nokeys option:-u option:-unicode option:-html-entities option:-nobibsource
+# #+BIBLIOGRAPHY: ./bib/publications IEEEtran  option:-nokeys option:-u option:-unicode option:-html-entities option:-nobibsource
 
-#+HTML: <br><div class='footer'><a href="http://peter-samarin.de">Peter Samarin</a></div>
+#+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
