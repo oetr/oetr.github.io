@@ -173,20 +173,17 @@ Though not the finest example of my coding skills, it does allow me to tak the c
 
 #+HTML: </table>
 
+#+BIBLIOGRAPHY: ../bib/references plain limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
 
-* Random Walk
+#+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
+
+* Random Walk                                                      :noexport:
 TODOS: 
 - resize canvas automatically, simplify examples
 - trader turtles
 - robot turtles
 - growing turtles
 
-
-
-
-#+BIBLIOGRAPHY: ../bib/references plain limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
-
-#+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
 
 
 * LATEX HEADER                                                     :noexport:
