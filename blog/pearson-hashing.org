@@ -94,7 +94,7 @@ Here is a procedure for converting sequences of numbers into strings of hex numb
 #+end_src
 
 
-#+BIBLIOGRAPHY: ../bib/references acm limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
+#+BIBLIOGRAPHY: ../bib/references plain limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
 
 
 #+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
