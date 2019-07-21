@@ -4,6 +4,7 @@ body {
     padding-top:0em;
     margin:1em;
     max-width:45em;
+    font:1em helvetica,arial,clean,sans-serif;
 }
 h1{text-align:left;}
 h2,h3 {
