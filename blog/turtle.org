@@ -17,10 +17,7 @@
 #+HTML_HEAD_EXTRA: <link href="/css/code.css" rel="stylesheet">
 
 /Turtle Geometry/ cite:Abelson1980Turtlegeometry is an excellent book that shows how far one can get with a little coding.
-The library to turtle can be found [[file:../src/Racket/turtle/turtle-graphics.rkt][here]].
-It's written in Racket.
-Though not the finest example of my coding skills, it does allow me to tak the code examples from the book without much conversion.
-
+I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Racket that can run all 2d code examples from the book without much conversion.
 
 #+begin_src racket :exports code
   #lang racket
