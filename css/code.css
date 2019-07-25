@@ -60,8 +60,8 @@ pre span.org-diff-none                   {color:#545454;}
 pre span.org-diff-removed                {color:#A60000;}
 
 div.results {
-    font-size:0.8em;
-    background-color:lightgoldenrodyellow;
+    font-size:0.9em;
+    background-color:white;
     display:table;
     border-radius:5px;
     margin-left:0.5em;
@@ -71,12 +71,13 @@ div.results {
 }
 
 pre.example {
-    font-size:1em;
-    background-color:lightgoldenrodyellow;
+    font-size:0.9em;
+    background-color:white;
     display:table;
     margin-left:3em;
     margin-right:0.5em;
     margin-top:0.5em;
     margin-bottom:0.5em;
-    box-shadow: -1px 2px 2px black;
+    /*box-shadow: -1px 1px 2px #21618C;*/
+    box-shadow: -1px 1px 1px black;
 }
