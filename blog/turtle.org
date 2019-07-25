@@ -30,7 +30,7 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 
 #+HTML: <table border="0px solid black">
 #+HTML: <tr>
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle0.png
   (clear 1000 1000)
   (forward 100)
@@ -46,7 +46,7 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 #+HTML: </td>
 
 
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle1.png
   (clear 1000 1000)
 
@@ -67,7 +67,7 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 #+HTML: </td>
 
 
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle2.png
   (clear 1000 1000)
 
@@ -88,7 +88,7 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 
 #+HTML: <table border="0px solid black">
 #+HTML: <tr>
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle21.png
   (clear 1000 1000)
   (poly 100 60 10)
@@ -97,7 +97,7 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 #+HTML: </td>
 
 
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle22.png
   (clear 1000 1000)
   (poly 50 18 20)
@@ -105,12 +105,12 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 #+end_src
 #+HTML: </td>
 #+HTML: </tr>
-#+HTML: </table>
+# #+HTML: </table>
 
 
-#+HTML: <table border="0px solid black">
+# #+HTML: <table border="0px solid black">
 #+HTML: <tr>
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle3.png
   (clear 1000 1000)
 
@@ -127,7 +127,7 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 #+HTML: </td>
 
 
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle4.png
   (clear 1000 1000)
   (poly 100 121 20)
@@ -135,12 +135,12 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 #+end_src
 #+HTML: </td>
 #+HTML: </tr>
-#+HTML: </table>
+# #+HTML: </table>
 
 
-#+HTML: <table>
+# #+HTML: <table>
 #+HTML: <tr>
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle5.png
   (clear 1000 1000)
 
@@ -155,7 +155,7 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 #+end_src
 #+HTML: </td>
 
-#+HTML: <td valign="top">
+#+HTML: <td valign="top" align="center">
 #+begin_src racket :session *Racket* :exports both :results raw :file ../images/turtle/first-turtle6.png
   (clear 1000 1000)
   (polyspi 10 70 100)
