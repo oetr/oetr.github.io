@@ -90,6 +90,16 @@ Implementation of perceptron convergence algorithm in Racket can be found in in 
 
 #+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
 
+#+HTML: <br>
+#+HTML: <script src="https://utteranc.es/client.js"
+#+HTML:        repo="oetr/oetr.github.io"
+#+HTML:        issue-term="pathname"
+#+HTML:        label="comments"
+#+HTML:        theme="github-light"
+#+HTML:        crossorigin="anonymous"
+#+HTML:        async>
+#+HTML: </script>
+
 
 * LATEX HEADER                                                     :noexport:
 #+LaTeX_CLASS: org-article

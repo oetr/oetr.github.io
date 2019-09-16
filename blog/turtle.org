@@ -174,10 +174,11 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 
 #+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
 
-
+#+HTML: <br>
 #+HTML: <script src="https://utteranc.es/client.js"
 #+HTML:        repo="oetr/oetr.github.io"
 #+HTML:        issue-term="pathname"
+#+HTML:        label="comments"
 #+HTML:        theme="github-light"
 #+HTML:        crossorigin="anonymous"
 #+HTML:        async>
