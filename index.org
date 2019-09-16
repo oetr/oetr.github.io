@@ -15,7 +15,6 @@
 #+HTML_HTML5_FANCY: t
 
 
-# - [[file:blog/symbolic-simplifier.org][Symbolic Simplifier]]
 - [[file:./publications.org][Publications]]
 - [[file:blog/turtle.org][Fun with Turtle Geometry]]
 - [[file:blog/pearson-hashing.org][Programming Praxis: Pearson Hashing]]
