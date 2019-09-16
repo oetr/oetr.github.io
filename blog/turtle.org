@@ -174,6 +174,15 @@ I wrote a small [[file:../src/Racket/turtle/turtle-graphics.rkt][library]] in Ra
 
 #+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
 
+
+#+HTML: <script src="https://utteranc.es/client.js"
+#+HTML:        repo="oetr/oetr.github.io"
+#+HTML:        issue-term="pathname"
+#+HTML:        theme="github-light"
+#+HTML:        crossorigin="anonymous"
+#+HTML:        async>
+#+HTML: </script>
+
 * Random Walk                                                      :noexport:
 TODOS: 
 - resize canvas automatically, simplify examples
