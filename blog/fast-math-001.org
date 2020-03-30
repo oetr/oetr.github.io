@@ -1,0 +1,166 @@
+# (require 'ob-racket)
+#+STARTUP: overview
+#+COLUMNS: %80ITEM  %7CLOCKSUM(Clocked) %5TODO(State)
+#+TITLE:   Fast math in Racket (part 0)
+#+AUTHOR:  Peter Samarin
+#+DATE:    21 March 2020
+#+EMAIL:   peter.samarin@gmail.com
+#+DESCRIPTION: 
+#+KEYWORDS:    
+#+LANGUAGE:    en
+#+OPTIONS: H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:nil pri:nil
+#+OPTIONS: tags:not-in-toc
+#+OPTIONS: creator:nil author:nil email:nil date:nil title:nil html-style:nil html-scripts:nil timestamp:nil
+#+OPTIONS: tex:dvisvgm
+#+BIND: org-latex-image-default-width nil
+
+#+HTML_HEAD_EXTRA: <link href="../css/code.css" rel="stylesheet">
+
+#+begin_src racket :exports code
+#lang racket
+#+end_src
+
+#+begin_src racket :session *RR* :exports both :results value
+(require fm)
+(fm:arange 0 10)
+#+end_src
+
+
+#+begin_src racket :session *RR* :exports both :results value
+  (fm:arange 0 100000)
+#+end_src
+
+
+#+begin_src racket :session *RR* :exports both :results output
+  (pretty-print (fm:arange 0 100000))
+#+end_src
+
+#+begin_src racket :session *RR* :exports both :results value
+ (make-ndarray '(2 1000 1000) 3 #:type 'uint8)
+#+end_src
+
+
+#+begin_src racket :session *RR* :exports both :results raw :file ../images/fast-math-001/test.png
+(require racket/draw)
+
+
+(define W 500)
+(define H 5)
+(define bm0 (make-bitmap W H #t))
+(define dc (new bitmap-dc% [bitmap bm0]))
+(define c0 (make-color 100 100 100))
+(send dc clear)
+(send dc draw-rectangle 0 0  W H)
+bm0
+#+end_src
+
+#+begin_src racket :session *RR* :exports both :results value
+(require racket/draw/unsafe/cairo)
+(define cairo-surface (send bm0 get-handle))
+(define context (cairo_create cairo-surface))
+(define mem (cairo_image_surface_get_data* cairo-surface))
+(define M (ndarray (list H W 4) 'uint8 mem))
+M
+#+end_src
+
+
+# #+BIBLIOGRAPHY: ../bib/references plain limit:t option:-a option:-unicode option:-html-entities option:-nobibsource option:-nokeywords
+
+
+#+HTML: <br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
+
+# #+HTML: <br>
+# #+HTML: <script src="https://utteranc.es/client.js"
+# #+HTML:        repo="oetr/oetr.github.io"
+# #+HTML:        issue-term="pathname"
+# #+HTML:        label="comments"
+# #+HTML:        theme="github-light"
+# #+HTML:        crossorigin="anonymous"
+# #+HTML:        async>
+# #+HTML: </script>
+
+
+* LATEX HEADER                                                     :noexport:
+#+LaTeX_CLASS: org-article
+#+LaTeX_CLASS_OPTIONS: [koma,a4paper,12pt,microtype,paralist,nofloat,colorlinks=true,linkcolor=gray,urlcolor=blue,citecolor=blue]
+# FONT: Charter combined with Bera->replaced with inconsolata (first 2 from charter, one from bera)
+# Packages
+#+LATEX_HEADER: \usepackage[ngerman, num]{isodate}
+#+LATEX_HEADER: \usepackage[utf8x]{inputenc}
+#+LATEX_HEADER: \usepackage[ngerman]{babel} % this is needed for umlauts
+#+LaTeX_HEADER: \usepackage[T1]{fontenc} 
+#+LaTeX_HEADER: \usepackage[bitstream-charter]{mathdesign}
+#+LaTeX_HEADER: \usepackage[scaled=.9]{helvet}
+#+LaTeX_HEADER: \usepackage[scaled]{beramono}
+#+LaTeX_HEADER: \usepackage{inconsolata}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+
+#+LATEX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER: \usepackage{lastpage}
+#+LATEX_HEADER: \usepackage[nottoc]{tocbibind}
+#+LaTeX_HEADER: \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+#+LaTeX_HEADER: \definecolor{webgreen}{rgb}{0,.5,0}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \pagestyle{empty}
+
+#+LaTeX_HEADER: \usepackage{longtable}
+#+LaTeX_HEADER: \usepackage{indentfirst}
+#+LaTeX_HEADER: \usepackage{float}
+#+LATEX_HEADER: \usepackage{subfigure}
+#+LaTeX_HEADER: \usepackage[format=plain,font=small]{caption}
+#+LaTeX_HEADER: \usepackage[german,capitalise]{cleveref} % Has to be loaded after hyperref
+
+# Make listings copyable
+#+LaTeX_HEADER: \usepackage{listings}
+#+LaTeX_HEADER: \definecolor{light-gray}{gray}{0.93}
+#+LaTeX_HEADER: \definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+#+LaTeX_HEADER: \definecolor{greencomments}{rgb}{0,0.5,0}
+#+LaTeX_HEADER: \definecolor{redstrings}{rgb}{0.9,0,0}
+
+#+LATEX_HEADER: \lstset{keepspaces=false,
+#+LATEX_HEADER: basicstyle=\footnotesize\ttfamily,
+#+LATEX_HEADER: frame=L,
+#+LATEX_HEADER: backgroundcolor=\color{light-gray},
+#+LATEX_HEADER: extendedchars=true,
+#+LATEX_HEADER: upquote=true,
+#+LATEX_HEADER: showspaces=true,
+#+LATEX_HEADER: showtabs=true,
+#+LATEX_HEADER: breaklines=true,
+#+LATEX_HEADER: showstringspaces=true,
+#+LATEX_HEADER: breakatwhitespace=true, 
+#+LATEX_HEADER: numbers=left,numberstyle=\tiny\color{gray},numbersep=10pt,stepnumber=1,firstnumber=1,numberfirstline=false,
+#+LATEX_HEADER: keywordstyle=\color{bluekeywords},
+#+LATEX_HEADER: stringstyle=\color{redstrings},
+#+LATEX_HEADER: commentstyle=\color{greencomments},
+#+LATEX_HEADER: literate={*}{{\char42}}1
+#+LATEX_HEADER:          {\ }{{\copyablespace}}1}
+
+
+#+LATEX_HEADER: \usepackage[space=true]{accsupp}
+#+LATEX_HEADER: \newcommand{\copyablespace}{\BeginAccSupp{method=hex,unicode,ActualText=00A0}\ \EndAccSupp{}}
+
+#+LATEX_HEADER: \usepackage{ifthen} % Allows the user of the \ifthenelse command
+#+LATEX_HEADER: \newboolean{enable-backrefs} % Variable to enable backrefs in the bibliography
+#+LATEX_HEADER: \setboolean{enable-backrefs}{false} % Variable value: true or false
+
+#+LATEX_HEADER: \newcommand{\backrefnotcitedstring}{\relax} % (Not cited.)
+#+LATEX_HEADER: \newcommand{\backrefcitedsinglestring}[1]{(cited on p. ~#1)}
+#+LATEX_HEADER: \newcommand{\backrefcitedmultistring}[1]{(cited on pp. ~#1.)}
+#+LATEX_HEADER: \ifthenelse{\boolean{enable-backrefs}} % If backrefs were enabled
+#+LATEX_HEADER: {
+#+LATEX_HEADER: \PassOptionsToPackage{hyperpageref}{backref}
+#+LATEX_HEADER: \usepackage{backref} % to be loaded after hyperref package 
+#+LATEX_HEADER: \renewcommand{\backreftwosep}{, ~} % separate 2 pages
+#+LATEX_HEADER: \renewcommand{\backreflastsep}{, ~} % separate last of longer list
+#+LATEX_HEADER: \renewcommand*{\backref}[1]{}  % disable standard
+#+LATEX_HEADER: \renewcommand*{\backrefalt}[4]{% detailed backref
+#+LATEX_HEADER: \ifcase #1 
+#+LATEX_HEADER: \backrefnotcitedstring
+#+LATEX_HEADER: \or
+#+LATEX_HEADER: \backrefcitedsinglestring{#2}
+#+LATEX_HEADER: \else
+#+LATEX_HEADER: \backrefcitedmultistring{#2}
+#+LATEX_HEADER: \fi}
+#+LATEX_HEADER: }{\relax}

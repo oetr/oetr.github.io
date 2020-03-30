@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fast math in Racket (part 0)</title>
+<meta name="generator" content="Org mode" />
+<link rel='stylesheet' href='/css/site.css' type='text/css'/>
+<link href="../css/code.css" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class="title">Fast math in Racket (part 0)</h1>
+          <p class="date">21 March 2020</p>
+</div>
+<div id="content">
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-keyword">#lang</span> <span class="org-variable-name">racket</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> fm<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>fm:arange <span class="org-racket-selfeval">0</span> <span class="org-racket-selfeval">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(ndarray:int64 (10)
+ '(0 1 2 ... 7 8 9))
+</pre>
+
+
+
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>fm:arange <span class="org-racket-selfeval">0</span> <span class="org-racket-selfeval">100000</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(ndarray:int64 (100000)
+ '(0 1 2 ... 99997 99998 99999))
+</pre>
+
+
+
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">pretty-print</span> <span class="org-rainbow-delimiters-depth-2">(</span>fm:arange <span class="org-racket-selfeval">0</span> <span class="org-racket-selfeval">100000</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(ndarray:int64 (100000)
+ '(0 1 2 ... 99997 99998 99999))
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span>make-ndarray '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-racket-selfeval">2</span> <span class="org-racket-selfeval">1000</span> <span class="org-racket-selfeval">1000</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-racket-selfeval">3</span> <span class="org-racket-keyword-argument">#:type</span> <span class="org-racket-selfeval">'uint8</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(ndarray:uint8 (2 1000 1000)
+
+ '(((3 3 3 ... 3 3 3)
+    (3 3 3 ... 3 3 3)
+    (3 3 3 ... 3 3 3)
+    ...
+    (3 3 3 ... 3 3 3)
+    (3 3 3 ... 3 3 3)
+    (3 3 3 ... 3 3 3))
+   ((3 3 3 ... 3 3 3)
+    (3 3 3 ... 3 3 3)
+    (3 3 3 ... 3 3 3)
+    ...
+    (3 3 3 ... 3 3 3)
+    (3 3 3 ... 3 3 3)
+    (3 3 3 ... 3 3 3))))
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> racket/draw<span class="org-rainbow-delimiters-depth-1">)</span>
+
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">W</span> <span class="org-racket-selfeval">500</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">H</span> <span class="org-racket-selfeval">5</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">bm0</span> <span class="org-rainbow-delimiters-depth-2">(</span>make-bitmap W H <span class="org-racket-selfeval">#t</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">dc</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">new</span> bitmap-dc% <span class="org-rainbow-delimiters-depth-3">[</span>bitmap bm0<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">c0</span> <span class="org-rainbow-delimiters-depth-2">(</span>make-color <span class="org-racket-selfeval">100</span> <span class="org-racket-selfeval">100</span> <span class="org-racket-selfeval">100</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">send</span> dc clear<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">send</span> dc draw-rectangle <span class="org-racket-selfeval">0</span> <span class="org-racket-selfeval">0</span>  W H<span class="org-rainbow-delimiters-depth-1">)</span>
+bm0
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../images/fast-math-001/test.png" alt="test.png" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> racket/draw/unsafe/cairo<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">cairo-surface</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">send</span> bm0 get-handle<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">context</span> <span class="org-rainbow-delimiters-depth-2">(</span>cairo_create cairo-surface<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">mem</span> <span class="org-rainbow-delimiters-depth-2">(</span>cairo_image_surface_get_data* cairo-surface<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">M</span> <span class="org-rainbow-delimiters-depth-2">(</span>ndarray <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">list</span> H W <span class="org-racket-selfeval">4</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-racket-selfeval">'uint8</span> mem<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+M
+</pre>
+</div>
+
+<pre class="example">
+(ndarray:uint8 (5 500 4)
+
+ '(((0 0 0 255)
+    (0 0 0 255)
+    (0 0 0 255)
+    ...
+    (0 0 0 255)
+    (0 0 0 255)
+    (0 0 0 255))
+   ((0 0 0 255)
+    (255 255 255 255)
+    (255 255 255 255)
+    ...
+    (255 255 255 255)
+    (255 255 255 255)
+    (0 0 0 255))
+   ((0 0 0 255)
+    (255 255 255 255)
+    (255 255 255 255)
+    ...
+    (255 255 255 255)
+    (255 255 255 255)
+    (0 0 0 255))
+   ((0 0 0 255)
+    (255 255 255 255)
+    (255 255 255 255)
+    ...
+    (255 255 255 255)
+    (255 255 255 255)
+    (0 0 0 255))
+   ((0 0 0 255)
+    (0 0 0 255)
+    (0 0 0 255)
+    ...
+    (0 0 0 255)
+    (0 0 0 255)
+    (0 0 0 255))))
+</pre>
+
+
+<br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>

@@ -5,6 +5,7 @@
     display: block;
 }*/
 div.org-src-container {
+    font-size:1.2em;
     border:0px solid #000000;
     margin-left:1em;
     background-color:#e7e7e7;
@@ -60,7 +61,7 @@ pre span.org-diff-none                   {color:#545454;}
 pre span.org-diff-removed                {color:#A60000;}
 
 div.results {
-    font-size:0.9em;
+    font-size:1.1em;
     background-color:white;
     display:table;
     border-radius:5px;
@@ -71,7 +72,7 @@ div.results {
 }
 
 pre.example {
-    font-size:0.9em;
+    font-size:1.1em;
     background-color:white;
     display:table;
     margin-left:3em;

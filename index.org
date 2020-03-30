@@ -16,6 +16,7 @@
 
 
 - [[file:./publications.org][Publications]]
+- [[file:blog/plplot.org][PLplot in Racket]]
 - [[file:blog/turtle.org][Fun with Turtle Geometry]]
 - [[file:blog/pearson-hashing.org][Programming Praxis: Pearson Hashing]]
 - [[file:blog/the-artist-in-you.org][The Artist in You]]
