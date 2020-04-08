@@ -7,12 +7,12 @@
 div.org-src-container {
     //white-space: pre; 
     font-family: monospace;
-    font-size:1.2em;
+    font-size:1em;
     border:0px solid #000000;
     margin-left:1em;
     background-color:#e7e7e7;
     border-radius:5px;
-    counter-increment: code-block;
+    //counter-increment: code-block;
     display: table;
     //border-left: 2px solid #69c;
     border-left: 2px solid #0f0f0f;
