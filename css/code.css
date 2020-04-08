@@ -13,7 +13,7 @@ div.org-src-container {
     background-color:#e7e7e7;
     border-radius:5px;
     //counter-increment: code-block;
-    display: table;
+    display: block;
     //border-left: 2px solid #69c;
     border-left: 2px solid #0f0f0f;
 }
