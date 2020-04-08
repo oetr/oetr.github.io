@@ -1,13 +1,24 @@
 body {
-    font-size:1em;
-    padding:0em;
-    padding-top:0em;
-    margin:1em;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    //font-family: Garamond, Baskerville, Baskerville Old Face, Hoefler Text, Times New Roman, serif; 
+    font-size:1.1em;
+    //padding:0em;
+    margin: 0 auto;
+    //margin:1em;
     max-width:45em;
+    line-height: 1.5;
+    padding: 0em 0em 0em 0em;
+    //padding-top:0em;
 }
-h1{text-align:left;}
+h1 {
+    text-align:left;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+}
 h2,h3 {
     line-height:1.2em;
+    margin-top: 1em;
+    padding-top: 1em;
 }
 div.publications li {
     margin:0 0 7px 0;
@@ -19,6 +30,46 @@ p {
     margin-bottom:1.5em;
     margin-left: .5em;
 }
+
+#table-of-contents {
+    //background: #f9f9f9 none repeat scroll 0 0;
+    //border: 0px solid #aaa;
+    width: auto;
+    display: table;
+    margin-bottom: 1em;
+    padding: 20px;
+}
+
+#table-of-contents h2{
+    font-variant-caps: all-small-caps;
+    color:#3f3f3f;
+    text-align: center;
+    margin-bottom:0em;
+    font-size:1em;
+    line-height:0.1em;
+}
+.section-number-1:after{
+    content:'';
+    margin-left: 1em;
+}
+.section-number-2:after{
+    content:'';
+    margin-left: 1em;
+}
+.section-number-3:after{
+    content:'';
+    margin-left: 1em;
+}
+    
+
+
+#text-table-of-contents li{
+    padding-right: 5px;
+    font-size:0.9em;
+    line-height:1.2em;
+    list-style: outside none none !important;
+}
+
 #bibliography table {
     margin-left: 0.5em;
 }
@@ -27,3 +78,5 @@ p {
 	max-width:none
     }
 }
+
+
