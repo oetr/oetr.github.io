@@ -12,11 +12,13 @@ div.org-src-container {
     margin-left:1em;
     background-color:#e7e7e7;
     border-radius:5px;
+    float: left;
+    overflow: visible;
+    min-width: 100%;
     //counter-increment: code-block;
     display: block;
     //border-left: 2px solid #69c;
     border-left: 2px solid #0f0f0f;
-    
 }
 
 
@@ -26,8 +28,9 @@ pre.src {
     margin-top:0.5em;
     margin-bottom:0.5em;
     margin-right:0.5em;
-    overflow: auto;
-    word-wrap: normal;
+    //overflow: wrap;
+    //word-wrap: normal;
+    min-width: 100%
     //overflow: hidden;
     //resize: horizontal;
 }

@@ -32,12 +32,13 @@ p {
 }
 
 #table-of-contents {
-    //background: #f9f9f9 none repeat scroll 0 0;
-    //border: 0px solid #aaa;
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #aaa;
     width: auto;
     display: table;
-    margin-bottom: 1em;
-    padding: 20px;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    padding: 10px;
 }
 
 #table-of-contents h2{
@@ -47,6 +48,8 @@ p {
     margin-bottom:0em;
     font-size:1em;
     line-height:0.1em;
+    margin-top: 0em;
+    margin-bottom: 0em;
 }
 .section-number-1:after{
     content:'';
@@ -80,3 +83,6 @@ p {
 }
 
 
+div.org-center {
+    text-align: center;
+}

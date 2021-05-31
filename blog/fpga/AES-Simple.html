@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple AES-128 in VHDL</title>
+<meta name="generator" content="Org mode" />
+<link rel='stylesheet' href='/css/site.css' type='text/css'/>
+<link href="../../css/code.css" rel="stylesheet">
+<link href="../../css/site.css" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class="title">Simple AES-128 in VHDL</h1>
+          <p class="date">3 August 2020</p>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2c4a9ca">Plan</a></li>
+<li><a href="#org2e1b049">Interface</a></li>
+<li><a href="#org6c1de94">Subbytes</a></li>
+<li><a href="#org89d07ae">Shift Rows</a></li>
+<li><a href="#org1f1fb10">Mix Columns</a></li>
+<li><a href="#orgafd6696">Key Scheduler</a></li>
+<li><a href="#org7c074da">One AES Round</a></li>
+<li><a href="#org3f3d800">Putting it All Together</a></li>
+<li><a href="#org310a90e">Testbench</a></li>
+</ul>
+</div>
+</div>
+<p>
+AES-128 [<a href="#FIPS197">1</a>] consists of 10 rounds, where each round is made up of 5 operations: <i>subbytes</i>, <i>shift rows</i>, <i>mix columns</i>, <i>key expansion</i>, and <i>add round key</i>:
+</p>
+
+<div class="org-center">
+<p>
+mix_columns(shift_rows(subbytes(s<sub>r</sub>))) &oplus; k<sub>r</sub>,
+</p>
+</div>
+<p>
+where
+</p>
+<ul class="org-ul">
+<li>r &#x2013; is the current round,</li>
+<li>s<sub>r</sub> &#x2013; is the current state,</li>
+<li>k<sub>r</sub> &#x2013; is the round key computed by the <i>key expansion</i>,</li>
+<li>&oplus; &#x2013; is a bitwise XOR operation.</li>
+</ul>
+<p>
+The last round skips the <i>mix columns</i> step.
+</p>
+
+
+<div id="outline-container-org2c4a9ca" class="outline-2">
+<h2 id="org2c4a9ca">Plan</h2>
+<div class="outline-text-2" id="text-org2c4a9ca">
+<p>
+The plan is to implement AES-128 encryption in the easiest way possible.
+I do this by following the <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf">spec</a>.
+This implementation uses one clock cycle per round and has a throughput of 1 AES implementation per 11 cycles.
+In what follows, I implement each of the operations mentioned above and put them together.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2e1b049" class="outline-2">
+<h2 id="org2e1b049">Interface</h2>
+<div class="outline-text-2" id="text-org2e1b049">
+<p>
+We get a 128-bit plaintext and key; we output a 128-bit ciphertext.
+We also need a clock, an <i>input enable</i> and <i>done</i> signals.
+</p>
+<div class="org-src-container">
+<pre class="src src-vhdl"><span class="org-keyword">entity</span> <span class="org-function-name">AES_128_Simple</span> <span class="org-keyword">is</span>
+  <span class="org-keyword">port</span> <span class="org-rainbow-delimiters-depth-1">(</span>
+    <span class="org-variable-name">clk</span>         : <span class="org-keyword">in</span>  <span class="org-type">std_logic</span>;
+    <span class="org-comment-delimiter">-- </span><span class="org-comment">management</span>
+    <span class="org-variable-name">input_valid</span> : <span class="org-keyword">in</span>  <span class="org-type">std_logic</span>;
+    <span class="org-variable-name">done</span>        : <span class="org-keyword">out</span> <span class="org-type">std_logic</span>;
+    <span class="org-comment-delimiter">-- </span><span class="org-comment">data</span>
+    <span class="org-variable-name">key</span>         : <span class="org-keyword">in</span>  <span class="org-type">std_logic_vector</span><span class="org-rainbow-delimiters-depth-2">(</span>127 <span class="org-keyword">downto</span> 0<span class="org-rainbow-delimiters-depth-2">)</span>;
+    <span class="org-variable-name">input</span>       : <span class="org-keyword">in</span>  <span class="org-type">std_logic_vector</span><span class="org-rainbow-delimiters-depth-2">(</span>127 <span class="org-keyword">downto</span> 0<span class="org-rainbow-delimiters-depth-2">)</span>;
+    <span class="org-variable-name">output</span>      : <span class="org-keyword">out</span> <span class="org-type">std_logic_vector</span><span class="org-rainbow-delimiters-depth-2">(</span>127 <span class="org-keyword">downto</span> 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>;
+<span class="org-keyword">end</span> <span class="org-keyword">entity</span> <span class="org-function-name">AES_128_Simple</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6c1de94" class="outline-2">
+<h2 id="org6c1de94">Subbytes</h2>
+</div>
+
+<div id="outline-container-org89d07ae" class="outline-2">
+<h2 id="org89d07ae">Shift Rows</h2>
+</div>
+
+<div id="outline-container-org1f1fb10" class="outline-2">
+<h2 id="org1f1fb10">Mix Columns</h2>
+</div>
+
+<div id="outline-container-orgafd6696" class="outline-2">
+<h2 id="orgafd6696">Key Scheduler</h2>
+</div>
+
+<div id="outline-container-org7c074da" class="outline-2">
+<h2 id="org7c074da">One AES Round</h2>
+</div>
+
+<div id="outline-container-org3f3d800" class="outline-2">
+<h2 id="org3f3d800">Putting it All Together</h2>
+</div>
+
+<div id="outline-container-org310a90e" class="outline-2">
+<h2 id="org310a90e">Testbench</h2>
+</div>
+
+
+
+<div id="bibliography">
+<h2>References</h2>
+
+<table>
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="FIPS197">1</a>]
+</td>
+<td class="bibtexitem">
+National&nbsp;Institute of&nbsp;Standards and Technology.
+ Advanced encryption standard (AES).
+ Technical Report FIPS 197, U.S. Department of Commerce, Washington,
+  D.C., 2001.
+
+</td>
+</tr>
+</table>
+</div>
+
+<br><div class='footer'><a href="https://peter-samarin.de">Peter Samarin</a></div>
+
+<br>
+<script src="https://utteranc.es/client.js"
+repo="oetr/oetr.github.io"
+issue-term="pathname"
+label="comments"
+theme="github-light"
+crossorigin="anonymous"
+async>
+</script>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>
